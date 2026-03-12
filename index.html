@@ -1,0 +1,1697 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Orbita — Digital Products Studio</title>
+<meta name="description" content="Orbita — Building the future of Saudi Arabia through innovative digital products and intelligent software." />
+<!-- Security: X-Content-Type-Options & Referrer Policy -->
+<meta http-equiv="X-Content-Type-Options" content="nosniff" />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
+<!-- Security: Content Security Policy -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://api.emailjs.com;" />
+<!-- Open Graph -->
+<meta property="og:title" content="Orbita — Digital Products Studio" />
+<meta property="og:description" content="Building the future of Saudi Arabia through innovative digital products." />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:locale:alternate" content="ar_SA" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+/* ─────────────────────────────────────────
+   CSS VARIABLES & RESET
+───────────────────────────────────────── */
+:root {
+  --cyan:    #58c5c7;
+  --cyan-d:  #3da8aa;
+  --gold:    #febe10;
+  --gold-d:  #d9a20d;
+  --ink:     #0d1117;
+  --ink2:    #141b24;
+  --ink3:    #1e2a38;
+  --surface: #1a2333;
+  --border:  rgba(88,197,199,.18);
+  --text:    #e8edf4;
+  --muted:   #7a8fa8;
+  --danger:  #f87171;
+  --success: #34d399;
+  --warn:    #fbbf24;
+  --purple:  #a78bfa;
+  --r:       14px;
+  --r2:      24px;
+  --ff-en:   'Space Grotesk', sans-serif;
+  --ff-body: 'Inter', sans-serif;
+  --ff-ar:   'IBM Plex Sans Arabic', sans-serif;
+  --trans:   .35s cubic-bezier(.4,0,.2,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--ink);
+  color:var(--text);
+  font-family:var(--ff-body);
+  font-size:16px;
+  line-height:1.6;
+  overflow-x:hidden;
+}
+html[dir="rtl"] body{font-family:var(--ff-ar);}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+button{cursor:pointer;border:none;background:none;font-family:inherit;}
+input,textarea,select{font-family:inherit;}
+::-webkit-scrollbar{width:6px;}
+::-webkit-scrollbar-track{background:var(--ink);}
+::-webkit-scrollbar-thumb{background:var(--cyan-d);border-radius:3px;}
+
+/* Reduced motion */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:0.01ms!important;transition-duration:0.01ms!important;}
+}
+
+/* NOISE TEXTURE */
+body::before{
+  content:'';position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  opacity:.4;pointer-events:none;z-index:0;
+}
+
+/* ─────────────────────────────────────────
+   BILINGUAL HELPERS
+───────────────────────────────────────── */
+.en-text{display:inline;}
+.ar-text{display:none;}
+html[dir="rtl"] .en-text{display:none;}
+html[dir="rtl"] .ar-text{display:inline;}
+/* Block-level bilingual */
+.en-block{display:block;}
+.ar-block{display:none;}
+html[dir="rtl"] .en-block{display:none;}
+html[dir="rtl"] .ar-block{display:block;}
+.display-font{font-family:var(--ff-en);}
+html[dir="rtl"] .display-font{font-family:var(--ff-ar);}
+
+/* ─────────────────────────────────────────
+   SKIP LINK (Accessibility)
+───────────────────────────────────────── */
+.skip-link{
+  position:absolute;top:-100%;left:50%;transform:translateX(-50%);
+  background:var(--cyan);color:var(--ink);
+  padding:10px 24px;border-radius:0 0 10px 10px;
+  font-weight:700;z-index:10000;
+  transition:top .3s;
+}
+.skip-link:focus{top:0;}
+
+/* ─────────────────────────────────────────
+   NAV
+───────────────────────────────────────── */
+nav{
+  position:fixed;top:0;left:0;right:0;
+  z-index:999;padding:0 5%;
+  display:flex;align-items:center;justify-content:space-between;
+  height:70px;
+  background:rgba(13,17,23,.85);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--border);
+  transition:var(--trans);
+}
+nav.scrolled{background:rgba(13,17,23,.97);}
+.nav-logo{
+  font-family:'Orbitron',var(--ff-en);font-weight:800;font-size:1.4rem;
+  letter-spacing:.1em;text-transform:uppercase;color:#fff;
+  display:flex;align-items:center;gap:8px;
+}
+.nav-links{display:flex;align-items:center;gap:2rem;}
+.nav-links a{
+  font-size:.875rem;font-weight:500;color:var(--muted);
+  transition:color var(--trans);position:relative;
+}
+.nav-links a::after{
+  content:'';position:absolute;bottom:-4px;left:0;right:0;
+  height:2px;background:var(--cyan);
+  transform:scaleX(0);transform-origin:left;transition:transform var(--trans);
+}
+html[dir="rtl"] .nav-links a::after{transform-origin:right;}
+.nav-links a:hover{color:var(--text);}
+.nav-links a:hover::after{transform:scaleX(1);}
+.nav-right{display:flex;align-items:center;gap:12px;}
+.lang-btn{
+  display:flex;align-items:center;gap:6px;
+  background:var(--ink3);border:1px solid var(--border);
+  border-radius:40px;padding:6px 14px;
+  font-size:.8rem;font-weight:600;color:var(--cyan);
+  transition:var(--trans);
+}
+.lang-btn:hover{background:var(--surface);border-color:var(--cyan);}
+.lang-btn svg{width:14px;height:14px;}
+
+/* Hamburger */
+.hamburger{
+  display:none;flex-direction:column;gap:5px;
+  width:28px;height:20px;justify-content:center;
+  z-index:1001;
+}
+.hamburger span{
+  display:block;width:100%;height:2px;
+  background:var(--text);border-radius:2px;
+  transition:var(--trans);
+}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+
+/* Mobile menu */
+.mobile-menu{
+  position:fixed;top:0;right:-100%;width:280px;height:100vh;
+  background:var(--ink2);border-left:1px solid var(--border);
+  z-index:1000;padding:90px 32px 40px;
+  transition:right .4s cubic-bezier(.4,0,.2,1);
+  display:flex;flex-direction:column;gap:8px;
+}
+html[dir="rtl"] .mobile-menu{right:auto;left:-100%;border-left:none;border-right:1px solid var(--border);}
+.mobile-menu.open{right:0;}
+html[dir="rtl"] .mobile-menu.open{left:0;right:auto;}
+.mobile-menu a{
+  display:block;padding:14px 20px;
+  font-size:1rem;font-weight:600;color:var(--muted);
+  border-radius:12px;transition:var(--trans);
+}
+.mobile-menu a:hover{color:var(--text);background:var(--ink3);}
+.mobile-overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,.6);
+  z-index:998;opacity:0;pointer-events:none;transition:opacity .3s;
+}
+.mobile-overlay.open{opacity:1;pointer-events:auto;}
+
+/* ─────────────────────────────────────────
+   HERO
+───────────────────────────────────────── */
+.hero{
+  min-height:100vh;display:flex;align-items:center;
+  padding:120px 5% 80px;position:relative;overflow:hidden;
+}
+.hero::after,.hero::before{
+  content:'';position:absolute;border-radius:50%;
+  filter:blur(80px);opacity:.25;
+  animation:drift 12s ease-in-out infinite alternate;
+}
+.hero::before{width:600px;height:600px;background:var(--cyan);top:-100px;right:-100px;}
+.hero::after{width:500px;height:500px;background:var(--gold);bottom:-100px;left:-100px;animation-delay:-6s;}
+@keyframes drift{0%{transform:translate(0,0) scale(1);}100%{transform:translate(30px,20px) scale(1.08);}}
+
+.hero-content{position:relative;z-index:1;max-width:720px;}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(88,197,199,.1);border:1px solid rgba(88,197,199,.3);
+  border-radius:40px;padding:6px 16px;
+  font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--cyan);margin-bottom:28px;
+}
+.hero-badge::before{
+  content:'';width:6px;height:6px;border-radius:50%;
+  background:var(--cyan);animation:pulse 2s infinite;
+}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
+
+.hero h1{
+  font-family:var(--ff-en);font-weight:800;
+  font-size:clamp(2.8rem,6vw,5rem);line-height:1.05;
+  letter-spacing:-.03em;margin-bottom:24px;
+}
+html[dir="rtl"] .hero h1{font-family:var(--ff-ar);letter-spacing:0;}
+.hero h1 .accent{color:var(--cyan);}
+.hero h1 .gold{color:var(--gold);}
+.hero p{font-size:1.125rem;color:var(--muted);max-width:520px;margin-bottom:40px;line-height:1.7;}
+.cta-row{display:flex;flex-wrap:wrap;gap:14px;}
+.btn-primary{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--cyan);color:var(--ink);
+  font-weight:700;font-size:.95rem;
+  padding:14px 28px;border-radius:var(--r);transition:var(--trans);
+}
+.btn-primary:hover{background:var(--cyan-d);transform:translateY(-2px);box-shadow:0 8px 24px rgba(88,197,199,.35);}
+.btn-primary:focus-visible{outline:3px solid var(--gold);outline-offset:3px;}
+.btn-outline{
+  display:inline-flex;align-items:center;gap:8px;
+  border:1px solid var(--border);color:var(--text);
+  font-weight:600;font-size:.95rem;
+  padding:14px 28px;border-radius:var(--r);transition:var(--trans);
+}
+.btn-outline:hover{border-color:var(--cyan);color:var(--cyan);background:rgba(88,197,199,.06);}
+.btn-outline:focus-visible{outline:3px solid var(--gold);outline-offset:3px;}
+.hero-metrics{
+  display:flex;flex-wrap:wrap;gap:40px;
+  margin-top:60px;padding-top:40px;border-top:1px solid var(--border);
+}
+.metric .num{font-family:var(--ff-en);font-weight:800;font-size:2rem;color:#fff;}
+html[dir="rtl"] .metric .num{font-family:var(--ff-ar);}
+.metric .num span{color:var(--cyan);}
+.metric .label{font-size:.82rem;color:var(--muted);margin-top:2px;}
+
+/* ─────────────────────────────────────────
+   SECTION SHARED
+───────────────────────────────────────── */
+section{padding:100px 5%;position:relative;}
+.section-tag{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:16px;
+}
+.section-tag::before{content:'';width:20px;height:2px;background:var(--gold);}
+h2.section-title{
+  font-family:var(--ff-en);font-weight:800;
+  font-size:clamp(2rem,4vw,3rem);line-height:1.1;
+  letter-spacing:-.025em;margin-bottom:16px;
+}
+html[dir="rtl"] h2.section-title{font-family:var(--ff-ar);letter-spacing:0;}
+.section-sub{font-size:1.05rem;color:var(--muted);max-width:560px;line-height:1.65;}
+
+/* ─────────────────────────────────────────
+   ENHANCEMENTS / AUDIT
+───────────────────────────────────────── */
+.audit-section{background:var(--ink2);}
+.audit-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:24px;margin-top:56px;
+}
+.audit-card{
+  background:var(--ink3);border:1px solid var(--border);
+  border-radius:var(--r2);padding:32px;
+  transition:var(--trans);position:relative;overflow:hidden;
+}
+.audit-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;transition:var(--trans);}
+.audit-card.ux::before{background:linear-gradient(90deg,var(--cyan),#3d9eef);}
+.audit-card.security::before{background:linear-gradient(90deg,var(--gold),#f97316);}
+.audit-card.perf::before{background:linear-gradient(90deg,var(--purple),var(--cyan));}
+.audit-card:hover{border-color:var(--cyan);transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.4);}
+.audit-num{font-family:var(--ff-en);font-size:3rem;font-weight:800;opacity:.12;line-height:1;margin-bottom:16px;}
+.audit-icon{
+  width:44px;height:44px;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:20px;font-size:1.3rem;
+}
+.audit-card.ux .audit-icon{background:rgba(88,197,199,.12);color:var(--cyan);}
+.audit-card.security .audit-icon{background:rgba(254,190,16,.12);color:var(--gold);}
+.audit-card.perf .audit-icon{background:rgba(167,139,250,.12);color:var(--purple);}
+.audit-card h3{font-family:var(--ff-en);font-weight:700;font-size:1.15rem;margin-bottom:10px;}
+html[dir="rtl"] .audit-card h3{font-family:var(--ff-ar);}
+.audit-card p{font-size:.9rem;color:var(--muted);line-height:1.65;}
+.pill{
+  display:inline-block;margin-top:16px;
+  padding:4px 12px;border-radius:40px;
+  font-size:.73rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+}
+.pill.ux{background:rgba(88,197,199,.12);color:var(--cyan);}
+.pill.security{background:rgba(254,190,16,.12);color:var(--gold);}
+.pill.perf{background:rgba(167,139,250,.12);color:var(--purple);}
+
+/* ─────────────────────────────────────────
+   PRODUCTS
+───────────────────────────────────────── */
+.products-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  gap:28px;margin-top:56px;
+}
+.product-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--r2);overflow:hidden;
+  transition:var(--trans);display:flex;flex-direction:column;
+}
+.product-card:hover{border-color:var(--cyan);transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,.5);}
+.product-header{
+  padding:40px 32px 28px;position:relative;overflow:hidden;
+  min-height:200px;display:flex;flex-direction:column;justify-content:flex-end;
+}
+.product-card.matjr .product-header{background:linear-gradient(135deg,#0f2027 0%,#1a3a3a 50%,#0f2a20 100%);}
+.product-card.matjr .product-header::before{
+  content:'';position:absolute;top:-40px;right:-40px;
+  width:200px;height:200px;border-radius:50%;
+  background:radial-gradient(circle,rgba(88,197,199,.3),transparent 70%);
+}
+.product-card.diriyah .product-header{background:linear-gradient(135deg,#1a0a00 0%,#2e1a00 50%,#1a1000 100%);}
+.product-card.diriyah .product-header::before{
+  content:'';position:absolute;top:-40px;right:-40px;
+  width:200px;height:200px;border-radius:50%;
+  background:radial-gradient(circle,rgba(254,190,16,.25),transparent 70%);
+}
+.product-card.sense .product-header{background:linear-gradient(135deg,#0a001a 0%,#1a0030 50%,#000a1a 100%);}
+.product-card.sense .product-header::before{
+  content:'';position:absolute;top:-40px;right:-40px;
+  width:200px;height:200px;border-radius:50%;
+  background:radial-gradient(circle,rgba(167,139,250,.3),transparent 70%);
+}
+.product-emoji{font-size:2.8rem;margin-bottom:16px;position:relative;z-index:1;}
+.product-name{
+  font-family:var(--ff-en);font-weight:800;
+  font-size:1.6rem;letter-spacing:-.02em;position:relative;z-index:1;
+}
+html[dir="rtl"] .product-name{font-family:var(--ff-ar);}
+.product-tag-line{
+  font-size:.8rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  margin-top:4px;position:relative;z-index:1;
+}
+.matjr .product-tag-line{color:var(--cyan);}
+.diriyah .product-tag-line{color:var(--gold);}
+.sense .product-tag-line{color:var(--purple);}
+.product-body{padding:28px 32px 32px;flex:1;display:flex;flex-direction:column;}
+.product-body p{font-size:.9rem;color:var(--muted);line-height:1.7;margin-bottom:20px;}
+.feature-list{list-style:none;margin-bottom:24px;}
+.feature-list li{
+  display:flex;align-items:flex-start;gap:10px;
+  font-size:.875rem;color:var(--muted);padding:6px 0;
+}
+.feature-list li::before{
+  content:'✓';flex-shrink:0;width:18px;height:18px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.65rem;font-weight:700;margin-top:2px;
+}
+.matjr .feature-list li::before{background:rgba(88,197,199,.15);color:var(--cyan);}
+.diriyah .feature-list li::before{background:rgba(254,190,16,.15);color:var(--gold);}
+.sense .feature-list li::before{background:rgba(167,139,250,.15);color:var(--purple);}
+.btn-product{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:11px 22px;border-radius:var(--r);
+  font-size:.875rem;font-weight:600;
+  border:1px solid;margin-top:auto;align-self:flex-start;transition:var(--trans);
+}
+.btn-product:focus-visible{outline:3px solid var(--gold);outline-offset:3px;}
+.matjr .btn-product{border-color:var(--cyan);color:var(--cyan);}
+.matjr .btn-product:hover{background:var(--cyan);color:var(--ink);}
+.diriyah .btn-product{border-color:var(--gold);color:var(--gold);}
+.diriyah .btn-product:hover{background:var(--gold);color:var(--ink);}
+.sense .btn-product{border-color:var(--purple);color:var(--purple);}
+.sense .btn-product:hover{background:var(--purple);color:var(--ink);}
+
+/* ─────────────────────────────────────────
+   REVIEWS / TESTIMONIALS
+───────────────────────────────────────── */
+.reviews-section{background:var(--ink2);}
+.reviews-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:24px;margin-top:56px;
+}
+.review-card{
+  background:var(--ink3);border:1px solid var(--border);
+  border-radius:var(--r2);padding:32px;transition:var(--trans);
+}
+.review-card:hover{border-color:rgba(88,197,199,.4);transform:translateY(-3px);}
+.stars{display:flex;gap:4px;margin-bottom:20px;}
+.stars span{color:var(--gold);font-size:1.1rem;}
+.review-card blockquote{
+  font-size:.95rem;line-height:1.7;color:var(--text);
+  font-style:italic;margin-bottom:24px;position:relative;padding-left:16px;
+}
+html[dir="rtl"] .review-card blockquote{padding-left:0;padding-right:16px;}
+.review-card blockquote::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;
+  width:3px;border-radius:2px;background:var(--cyan);
+}
+html[dir="rtl"] .review-card blockquote::before{left:auto;right:0;}
+.reviewer{display:flex;align-items:center;gap:14px;}
+.avatar{
+  width:44px;height:44px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:700;font-size:1rem;flex-shrink:0;
+}
+.reviewer-info .name{font-weight:600;font-size:.9rem;}
+.reviewer-info .role{font-size:.78rem;color:var(--muted);}
+
+/* ─────────────────────────────────────────
+   CRM / CONTACT
+───────────────────────────────────────── */
+.crm-section{background:var(--ink);position:relative;overflow:hidden;}
+.crm-section::before{
+  content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:800px;height:800px;border-radius:50%;
+  background:radial-gradient(circle,rgba(88,197,199,.06),transparent 65%);
+  pointer-events:none;
+}
+.crm-wrapper{
+  display:grid;grid-template-columns:1fr 1.4fr;
+  gap:60px;align-items:start;max-width:1100px;margin:0 auto;
+}
+@media(max-width:768px){.crm-wrapper{grid-template-columns:1fr;}}
+.crm-info{position:sticky;top:100px;}
+.crm-info h2{margin-bottom:20px;}
+.crm-info>p{color:var(--muted);line-height:1.7;margin-bottom:32px;}
+.contact-methods{display:flex;flex-direction:column;gap:16px;}
+.contact-item{
+  display:flex;align-items:center;gap:14px;
+  background:var(--ink3);border:1px solid var(--border);
+  border-radius:12px;padding:16px 20px;transition:var(--trans);
+}
+.contact-item:hover{border-color:var(--cyan);}
+.contact-icon{
+  width:36px;height:36px;border-radius:8px;
+  background:rgba(88,197,199,.1);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--cyan);font-size:1rem;flex-shrink:0;
+}
+.contact-item .c-label{font-size:.75rem;color:var(--muted);margin-bottom:2px;}
+.contact-item .c-val{font-size:.9rem;font-weight:500;}
+
+/* CRM FORM */
+.crm-form-wrapper{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--r2);padding:40px;
+}
+.form-tabs{
+  display:flex;gap:4px;margin-bottom:28px;
+  background:var(--ink3);border-radius:12px;padding:4px;
+}
+.form-tab{
+  flex:1;padding:10px 16px;border-radius:10px;
+  font-size:.8rem;font-weight:600;color:var(--muted);
+  text-align:center;transition:var(--trans);
+}
+.form-tab.active{background:var(--cyan);color:var(--ink);}
+.form-tab:hover:not(.active){color:var(--text);}
+.tab-panel{display:none;}
+.tab-panel.active{display:block;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+@media(max-width:540px){.form-row{grid-template-columns:1fr;}}
+.field{display:flex;flex-direction:column;gap:8px;margin-bottom:20px;}
+.field label{
+  font-size:.8rem;font-weight:600;color:var(--muted);
+  letter-spacing:.04em;text-transform:uppercase;
+}
+.field input,.field textarea,.field select{
+  background:var(--ink3);border:1.5px solid var(--border);
+  border-radius:10px;padding:13px 16px;color:var(--text);
+  font-size:.9rem;outline:none;transition:var(--trans);width:100%;
+  -webkit-appearance:none;
+}
+.field input::placeholder,.field textarea::placeholder{color:var(--muted);opacity:.7;}
+.field input:focus,.field textarea:focus,.field select:focus{
+  border-color:var(--cyan);box-shadow:0 0 0 3px rgba(88,197,199,.12);
+}
+.field input.error,.field textarea.error{border-color:var(--danger);}
+.field .err-msg{font-size:.75rem;color:var(--danger);display:none;}
+.field input.error~.err-msg,.field textarea.error~.err-msg{display:block;}
+.field textarea{resize:vertical;min-height:130px;}
+.field select option{background:var(--ink3);}
+.hp-field{position:absolute;left:-9999px;opacity:0;pointer-events:none;}
+.submit-btn{
+  width:100%;background:var(--cyan);color:var(--ink);
+  font-weight:700;font-size:1rem;
+  padding:15px 28px;border-radius:12px;transition:var(--trans);
+  display:flex;align-items:center;justify-content:center;gap:10px;
+}
+.submit-btn:hover{background:var(--cyan-d);transform:translateY(-2px);box-shadow:0 8px 24px rgba(88,197,199,.35);}
+.submit-btn:disabled{opacity:.5;cursor:not-allowed;transform:none;}
+.submit-btn:focus-visible{outline:3px solid var(--gold);outline-offset:3px;}
+.form-success{
+  text-align:center;padding:40px 20px;
+  display:none;flex-direction:column;align-items:center;gap:16px;
+}
+.form-success .check{
+  width:64px;height:64px;border-radius:50%;
+  background:rgba(88,197,199,.12);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.8rem;color:var(--cyan);margin:0 auto 8px;
+}
+.form-success h3{font-family:var(--ff-en);font-weight:700;font-size:1.4rem;}
+html[dir="rtl"] .form-success h3{font-family:var(--ff-ar);}
+.form-success p{color:var(--muted);font-size:.9rem;}
+
+/* CRM Dashboard */
+.crm-dashboard{
+  margin-top:28px;background:var(--ink3);
+  border:1px solid var(--border);border-radius:16px;
+  padding:24px;display:none;
+}
+.crm-dashboard.has-data{display:block;}
+.crm-dash-title{
+  font-family:var(--ff-en);font-weight:700;
+  font-size:1rem;margin-bottom:16px;
+  display:flex;align-items:center;gap:8px;
+}
+html[dir="rtl"] .crm-dash-title{font-family:var(--ff-ar);}
+.crm-stats{display:flex;gap:16px;margin-bottom:20px;flex-wrap:wrap;}
+.crm-stat{
+  flex:1;min-width:100px;background:var(--surface);
+  border:1px solid var(--border);border-radius:12px;
+  padding:16px;text-align:center;
+}
+.crm-stat .stat-num{font-family:var(--ff-en);font-weight:800;font-size:1.5rem;color:var(--cyan);}
+.crm-stat .stat-label{font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-top:4px;}
+.crm-submissions{max-height:300px;overflow-y:auto;}
+.crm-sub-item{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:12px 16px;border-radius:10px;
+  background:var(--surface);margin-bottom:8px;
+  border:1px solid var(--border);
+  font-size:.85rem;transition:var(--trans);
+}
+.crm-sub-item:hover{border-color:rgba(88,197,199,.3);}
+.crm-sub-name{font-weight:600;color:var(--text);}
+.crm-sub-product{
+  font-size:.7rem;font-weight:600;text-transform:uppercase;
+  letter-spacing:.06em;padding:3px 10px;border-radius:20px;
+}
+.crm-sub-product.matjrai{background:rgba(88,197,199,.12);color:var(--cyan);}
+.crm-sub-product.diriyah{background:rgba(254,190,16,.12);color:var(--gold);}
+.crm-sub-product.sense{background:rgba(167,139,250,.12);color:var(--purple);}
+.crm-sub-product.custom,.crm-sub-product.other{background:rgba(255,255,255,.06);color:var(--muted);}
+.crm-sub-time{font-size:.75rem;color:var(--muted);}
+.crm-clear-btn{
+  margin-top:12px;padding:8px 16px;border-radius:8px;
+  font-size:.78rem;font-weight:600;
+  background:rgba(248,113,113,.1);color:var(--danger);
+  border:1px solid rgba(248,113,113,.2);transition:var(--trans);
+}
+.crm-clear-btn:hover{background:rgba(248,113,113,.2);}
+
+/* ─────────────────────────────────────────
+   SECURITY BAR
+───────────────────────────────────────── */
+.security-bar{
+  background:var(--ink2);
+  border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+  padding:24px 5%;
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:32px;
+}
+.sec-badge{display:flex;align-items:center;gap:8px;font-size:.8rem;font-weight:600;color:var(--muted);}
+.sec-badge svg{color:var(--cyan);width:16px;height:16px;}
+
+/* ─────────────────────────────────────────
+   FOOTER
+───────────────────────────────────────── */
+footer{background:var(--ink2);border-top:1px solid var(--border);padding:60px 5% 30px;}
+.footer-top{
+  display:grid;grid-template-columns:1.5fr repeat(3,1fr);
+  gap:40px;margin-bottom:48px;
+}
+@media(max-width:768px){.footer-top{grid-template-columns:1fr 1fr;}}
+@media(max-width:480px){.footer-top{grid-template-columns:1fr;}}
+.footer-brand .logo{
+  font-family:'Orbitron',var(--ff-en);font-weight:800;font-size:1.4rem;
+  letter-spacing:.1em;text-transform:uppercase;color:#fff;margin-bottom:12px;
+}
+.footer-brand p{font-size:.85rem;color:var(--muted);line-height:1.6;max-width:280px;}
+.footer-col h4{
+  font-family:var(--ff-en);font-weight:700;
+  font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--text);margin-bottom:16px;
+}
+html[dir="rtl"] .footer-col h4{font-family:var(--ff-ar);letter-spacing:0;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.footer-col ul li a{font-size:.85rem;color:var(--muted);transition:color var(--trans);}
+.footer-col ul li a:hover{color:var(--cyan);}
+.footer-bottom{
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
+  gap:16px;padding-top:24px;border-top:1px solid var(--border);
+  font-size:.8rem;color:var(--muted);
+}
+
+/* ─────────────────────────────────────────
+   SCROLL TO TOP
+───────────────────────────────────────── */
+.scroll-top{
+  position:fixed;bottom:30px;right:30px;
+  width:48px;height:48px;border-radius:50%;
+  background:var(--cyan);color:var(--ink);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.2rem;font-weight:700;
+  box-shadow:0 8px 24px rgba(88,197,199,.35);
+  opacity:0;transform:translateY(20px);
+  transition:var(--trans);z-index:997;
+  pointer-events:none;
+}
+html[dir="rtl"] .scroll-top{right:auto;left:30px;}
+.scroll-top.visible{opacity:1;transform:translateY(0);pointer-events:auto;}
+.scroll-top:hover{background:var(--cyan-d);transform:translateY(-3px);}
+.scroll-top:focus-visible{outline:3px solid var(--gold);outline-offset:3px;}
+
+/* ─────────────────────────────────────────
+   TOAST
+───────────────────────────────────────── */
+#toast{
+  position:fixed;bottom:90px;right:30px;
+  background:var(--ink3);border:1px solid var(--border);
+  border-left:3px solid var(--cyan);border-radius:12px;
+  padding:14px 20px;font-size:.875rem;color:var(--text);
+  box-shadow:0 8px 32px rgba(0,0,0,.4);
+  transform:translateY(80px);opacity:0;
+  transition:all .4s cubic-bezier(.34,1.56,.64,1);
+  z-index:9999;max-width:300px;
+}
+html[dir="rtl"] #toast{right:auto;left:30px;border-left:none;border-right:3px solid var(--cyan);}
+#toast.show{transform:translateY(0);opacity:1;}
+
+/* ─────────────────────────────────────────
+   RESPONSIVE
+───────────────────────────────────────── */
+@media(max-width:900px){
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+  .hero h1{font-size:2.6rem;}
+}
+@media(max-width:600px){
+  section{padding:70px 5%;}
+  .hero{padding:100px 5% 60px;}
+  .crm-form-wrapper{padding:28px 20px;}
+  .footer-top{gap:28px;}
+}
+
+/* ─────────────────────────────────────────
+   RTL ADJUSTMENTS
+───────────────────────────────────────── */
+html[dir="rtl"] .section-tag::before{order:2;}
+html[dir="rtl"] .hero-badge::before{order:2;}
+
+/* ─────────────────────────────────────────
+   FADE-IN ANIMATION
+───────────────────────────────────────── */
+.fade-up{opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease;}
+.fade-up.visible{opacity:1;transform:translateY(0);}
+
+/* ─────────────────────────────────────────
+   LOADING SPINNER
+───────────────────────────────────────── */
+.spinner{
+  width:18px;height:18px;border:2px solid transparent;
+  border-top-color:var(--ink);border-radius:50%;
+  animation:spin .6s linear infinite;display:none;
+}
+.submit-btn.loading .spinner{display:block;}
+.submit-btn.loading .btn-text{display:none;}
+@keyframes spin{to{transform:rotate(360deg);}}
+</style>
+</head>
+<body>
+
+<!-- SKIP LINK (Accessibility) -->
+<a href="#main-content" class="skip-link">
+  <span class="en-text">Skip to main content</span>
+  <span class="ar-text">انتقل إلى المحتوى الرئيسي</span>
+</a>
+
+<!-- ═══════════════════════════════════════
+     NAVIGATION
+═══════════════════════════════════════ -->
+<nav id="navbar" role="navigation" aria-label="Main navigation">
+  <a href="#home" class="nav-logo display-font" aria-label="Orbita Home">
+    Orbita
+  </a>
+  <div class="nav-links">
+    <a href="#products"><span class="en-text">Products</span><span class="ar-text">المنتجات</span></a>
+    <a href="#enhancements"><span class="en-text">Insights</span><span class="ar-text">الرؤى</span></a>
+    <a href="#contact"><span class="en-text">Contact</span><span class="ar-text">تواصل معنا</span></a>
+  </div>
+  <div class="nav-right">
+    <button class="lang-btn" id="langToggle" aria-label="Switch language">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      <span id="langLabel">العربية</span>
+    </button>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-overlay" id="mobileOverlay"></div>
+<div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile navigation">
+  <a href="#home" class="mobile-link"><span class="en-text">Home</span><span class="ar-text">الرئيسية</span></a>
+  <a href="#products" class="mobile-link"><span class="en-text">Products</span><span class="ar-text">المنتجات</span></a>
+  <a href="#enhancements" class="mobile-link"><span class="en-text">Insights</span><span class="ar-text">الرؤى</span></a>
+  <a href="#contact" class="mobile-link"><span class="en-text">Contact</span><span class="ar-text">تواصل معنا</span></a>
+</div>
+
+<!-- ═══════════════════════════════════════
+     HERO
+═══════════════════════════════════════ -->
+<section class="hero" id="home">
+  <div class="hero-content" id="main-content">
+    <div class="hero-badge">
+      <span class="en-text">Powering Vision 2030 Products</span>
+      <span class="ar-text">نُحرِّك منتجات رؤية 2030</span>
+    </div>
+    <h1 class="display-font">
+      <span class="en-block">
+        We Build<br/><span class="accent">Digital</span> Products<br/>That <span class="gold">Matter</span>
+      </span>
+      <span class="ar-block">
+        نبني منتجاتٍ<br/><span class="accent">رقمية</span> تُحدث<br/>فارقاً <span class="gold">حقيقياً</span>
+      </span>
+    </h1>
+    <p>
+      <span class="en-text">Orbita is a Saudi-born digital products studio engineering the next generation of intelligent software — from AI commerce to cultural heritage tech.</span>
+      <span class="ar-text">Orbita استوديو سعودي لتطوير المنتجات الرقمية — من الذكاء الاصطناعي في التجارة إلى تقنيات التراث الثقافي.</span>
+    </p>
+    <div class="cta-row">
+      <a href="#products" class="btn-primary">
+        <span class="en-text">Explore Products</span>
+        <span class="ar-text">استكشف المنتجات</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#contact" class="btn-outline">
+        <span class="en-text">Get in Touch</span>
+        <span class="ar-text">تواصل معنا</span>
+      </a>
+    </div>
+    <div class="hero-metrics">
+      <div class="metric">
+        <div class="num" data-target="3">0<span>+</span></div>
+        <div class="label"><span class="en-text">Live Products</span><span class="ar-text">منتجات نشطة</span></div>
+      </div>
+      <div class="metric">
+        <div class="num" data-target="50">0<span>K+</span></div>
+        <div class="label"><span class="en-text">End Users</span><span class="ar-text">مستخدم نهائي</span></div>
+      </div>
+      <div class="metric">
+        <div class="num" data-target="98">0<span>%</span></div>
+        <div class="label"><span class="en-text">Client Satisfaction</span><span class="ar-text">رضا العملاء</span></div>
+      </div>
+      <div class="metric">
+        <div class="num" data-target="5">0<span>+</span></div>
+        <div class="label"><span class="en-text">Gov. Partners</span><span class="ar-text">شركاء حكوميون</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SECURITY BAR
+═══════════════════════════════════════ -->
+<div class="security-bar" role="complementary" aria-label="Security certifications">
+  <div class="sec-badge">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    <span class="en-text">HTTPS Encrypted</span><span class="ar-text">HTTPS مشفّر</span>
+  </div>
+  <div class="sec-badge">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+    <span class="en-text">OWASP Compliant</span><span class="ar-text">متوافق مع OWASP</span>
+  </div>
+  <div class="sec-badge">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+    <span class="en-text">PDPL Ready</span><span class="ar-text">متوافق مع نظام حماية البيانات</span>
+  </div>
+  <div class="sec-badge">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+    <span class="en-text">ISO 27001 Aligned</span><span class="ar-text">متوافق مع ISO 27001</span>
+  </div>
+  <div class="sec-badge">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+    <span class="en-text">99.9% Uptime SLA</span><span class="ar-text">اتفاقية توفر 99.9%</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     PRODUCTS
+═══════════════════════════════════════ -->
+<section id="products">
+  <div class="section-tag"><span class="en-text">Our Products</span><span class="ar-text">منتجاتنا</span></div>
+  <h2 class="section-title display-font fade-up">
+    <span class="en-block">Three Products.<br/>One Vision.</span>
+    <span class="ar-block">ثلاثة منتجات.<br/>رؤية واحدة.</span>
+  </h2>
+  <p class="section-sub fade-up">
+    <span class="en-text">Purpose-built for Saudi Arabia and beyond — each product solves a real problem with precision engineering and human-centred design.</span>
+    <span class="ar-text">مصمَّمة خصيصاً للمملكة العربية السعودية وما وراءها — كل منتج يحل مشكلة حقيقية بهندسة دقيقة وتصميم يضع الإنسان أولاً.</span>
+  </p>
+  <div class="products-grid">
+
+    <!-- MatjrAI -->
+    <article class="product-card matjr fade-up" aria-label="MatjrAI Product">
+      <div class="product-header">
+        <div class="product-logo-icon" style="width:80px;height:80px;border-radius:20px;background:linear-gradient(135deg,#8b5cf6,#6366f1);display:flex;align-items:center;justify-content:center;margin-bottom:16px;position:relative;z-index:1;">
+          <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4"/><line x1="8" y1="16" x2="8" y2="16"/><line x1="16" y1="16" x2="16" y2="16"/><circle cx="8" cy="16" r="1" fill="#fff"/><circle cx="16" cy="16" r="1" fill="#fff"/></svg>
+        </div>
+        <div class="product-name display-font">MatjrAI</div>
+        <div class="product-tag-line">
+          <span class="en-text">Build Your Store with AI</span>
+          <span class="ar-text">أنشئ متجرك بقوة الذكاء الاصطناعي</span>
+        </div>
+      </div>
+      <div class="product-body">
+        <p>
+          <span class="en-text">An AI-powered store builder that understands your business and builds your complete e-commerce store on Zid, Salla, or Shopify — from brand identity and product catalog to automated store configuration and publishing.</span>
+          <span class="ar-text">مساعد ذكي يفهم احتياجاتك ويبني متجرك الإلكتروني بالكامل على زد أو سلة أو شوبيفاي — من الهوية البصرية وكتالوج المنتجات إلى إعداد المتجر ونشره تلقائياً.</span>
+        </p>
+        <ul class="feature-list" role="list">
+          <li role="listitem"><span class="en-text">AI chat builds your store via conversational discovery</span><span class="ar-text">محادثة ذكية تبني متجرك من خلال فهم احتياجاتك</span></li>
+          <li role="listitem"><span class="en-text">Auto brand identity: colors, design & visual style</span><span class="ar-text">هوية بصرية تلقائية: ألوان وتصاميم تناسب علامتك</span></li>
+          <li role="listitem"><span class="en-text">Multi-platform: Zid, Salla & Shopify automation</span><span class="ar-text">متعدد المنصات: أتمتة زد وسلة وشوبيفاي</span></li>
+          <li role="listitem"><span class="en-text">Full RPA engine: setup, products, branding & publish</span><span class="ar-text">محرك أتمتة كامل: إعداد ومنتجات وهوية ونشر</span></li>
+        </ul>
+        <a href="#contact" class="btn-product">
+          <span class="en-text">Request Demo</span><span class="ar-text">اطلب عرضاً</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </article>
+
+    <!-- Diriyah Live -->
+    <article class="product-card diriyah fade-up" aria-label="Diriyah Live Product">
+      <div class="product-header">
+        <img src="diriyah-logo.jpg" alt="Diriyah Logo" class="product-logo-img" style="width:80px;height:80px;border-radius:16px;margin-bottom:16px;object-fit:cover;position:relative;z-index:1;">
+        <div class="product-name display-font">Diriyah Live</div>
+        <div class="product-tag-line">
+          <span class="en-text">Heritage of the Past, Brightness of the Future</span>
+          <span class="ar-text">تراث الماضي، إشراقة المستقبل</span>
+        </div>
+      </div>
+      <div class="product-body">
+        <p>
+          <span class="en-text">A comprehensive heritage companion app for Diriyah — explore UNESCO World Heritage sites like At-Turaif District and Salwa Palace with shade-aware GPS walking paths, live cultural events, and community recycling programs.</span>
+          <span class="ar-text">تطبيق شامل لاستكشاف تراث الدرعية — زُر مواقع التراث العالمي لليونسكو مثل حي الطريف وقصر سلوى مع مسارات مشي ذكية بتقنية GPS تراعي الظل، وفعاليات ثقافية حية، وبرامج إعادة تدوير مجتمعية.</span>
+        </p>
+        <ul class="feature-list" role="list">
+          <li role="listitem"><span class="en-text">Shade-aware GPS walking paths (up to 85% shade coverage)</span><span class="ar-text">مسارات مشي بتقنية GPS مع تغطية ظل تصل إلى 85%</span></li>
+          <li role="listitem"><span class="en-text">UNESCO heritage sites: At-Turaif, Salwa Palace, Al-Bujairi</span><span class="ar-text">مواقع تراث اليونسكو: الطريف، قصر سلوى، البجيري</span></li>
+          <li role="listitem"><span class="en-text">Live cultural events, sports, and workshops</span><span class="ar-text">فعاليات ثقافية ورياضية وورش عمل مباشرة</span></li>
+          <li role="listitem"><span class="en-text">Weather-aware recommendations & bilingual support</span><span class="ar-text">توصيات حسب الطقس ودعم ثنائي اللغة</span></li>
+        </ul>
+        <a href="#contact" class="btn-product">
+          <span class="en-text">Request Demo</span><span class="ar-text">اطلب عرضاً</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </article>
+
+    <!-- Sense -->
+    <article class="product-card sense fade-up" aria-label="Sense Product">
+      <div class="product-header">
+        <div class="product-emoji" aria-hidden="true">♿</div>
+        <div class="product-name display-font">Sense</div>
+        <div class="product-tag-line">
+          <span class="en-text">AI Navigation for Visual Impairment</span>
+          <span class="ar-text">نظام ملاحة ذكي لضعاف البصر</span>
+        </div>
+      </div>
+      <div class="product-body">
+        <p>
+          <span class="en-text">Sense is an AI-powered indoor/outdoor navigation system that empowers visually impaired users with real-time voice guidance, obstacle detection, and smart contextual awareness.</span>
+          <span class="ar-text">Sense نظام ملاحة ذكي يُمكِّن المكفوفين وضعاف البصر من التنقل باستقلالية عبر توجيه صوتي فوري وكشف عوائق ووعي سياقي ذكي داخلياً وخارجياً.</span>
+        </p>
+        <ul class="feature-list" role="list">
+          <li role="listitem"><span class="en-text">Real-time obstacle detection via camera</span><span class="ar-text">كشف عوائق فوري عبر الكاميرا</span></li>
+          <li role="listitem"><span class="en-text">Indoor navigation with BLE beacons</span><span class="ar-text">ملاحة داخلية عبر إشارات BLE</span></li>
+          <li role="listitem"><span class="en-text">Arabic voice guidance with dialectal support</span><span class="ar-text">توجيه صوتي عربي بدعم اللهجات المحلية</span></li>
+          <li role="listitem"><span class="en-text">WCAG 2.1 AAA accessibility compliant</span><span class="ar-text">متوافق مع معايير WCAG 2.1 AAA</span></li>
+        </ul>
+        <a href="#contact" class="btn-product">
+          <span class="en-text">Request Demo</span><span class="ar-text">اطلب عرضاً</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     UX & SECURITY ENHANCEMENTS
+═══════════════════════════════════════ -->
+<section class="audit-section" id="enhancements">
+  <div class="section-tag"><span class="en-text">Site Enhancements</span><span class="ar-text">تحسينات الموقع</span></div>
+  <h2 class="section-title display-font fade-up">
+    <span class="en-block">6 Critical Upgrades<br/>Implemented Here</span>
+    <span class="ar-block">6 تحسينات حيوية<br/>مطبّقة في هذا الموقع</span>
+  </h2>
+  <p class="section-sub fade-up">
+    <span class="en-text">Based on a comprehensive UX and security audit of the original site — here's what we fixed and why it matters.</span>
+    <span class="ar-text">بناءً على مراجعة شاملة لتجربة المستخدم والأمان للموقع الأصلي — إليك ما أصلحناه ولماذا يهم.</span>
+  </p>
+  <div class="audit-grid">
+
+    <!-- UX 1 -->
+    <div class="audit-card ux fade-up">
+      <div class="audit-num">01</div>
+      <div class="audit-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <h3>
+        <span class="en-text">Bilingual RTL-First Architecture</span>
+        <span class="ar-text">بنية RTL ثنائية اللغة</span>
+      </h3>
+      <p>
+        <span class="en-text">The original site had no Arabic support. We rebuilt the layout with CSS logical properties, Tajawal font for Arabic, and a seamless language toggle that flips all content and direction instantly — no page reload needed.</span>
+        <span class="ar-text">الموقع الأصلي كان يفتقر إلى دعم العربية. أعدنا بناء التخطيط بخصائص CSS المنطقية وخط تجوال للعربية وتبديل سلس للغة يعكس كل المحتوى والاتجاه فوراً — بدون إعادة تحميل.</span>
+      </p>
+      <span class="pill ux"><span class="en-text">UX Enhancement</span><span class="ar-text">تحسين UX</span></span>
+    </div>
+
+    <!-- UX 2 -->
+    <div class="audit-card ux fade-up">
+      <div class="audit-num">02</div>
+      <div class="audit-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      </div>
+      <h3>
+        <span class="en-text">Responsive Mobile Navigation</span>
+        <span class="ar-text">قائمة تنقل متجاوبة للجوال</span>
+      </h3>
+      <p>
+        <span class="en-text">Added a hamburger menu with slide-out drawer for mobile devices, animated transitions, overlay backdrop, and proper ARIA attributes for screen reader accessibility on all viewports.</span>
+        <span class="ar-text">أضفنا قائمة هامبرغر بدرج منزلق للأجهزة المحمولة، مع انتقالات متحركة، وخلفية معتمة، وسمات ARIA مناسبة لقارئات الشاشة على جميع أحجام الشاشات.</span>
+      </p>
+      <span class="pill ux"><span class="en-text">UX Enhancement</span><span class="ar-text">تحسين UX</span></span>
+    </div>
+
+    <!-- UX 3 -->
+    <div class="audit-card ux fade-up">
+      <div class="audit-num">03</div>
+      <div class="audit-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      </div>
+      <h3>
+        <span class="en-text">Animated Counters & Micro-interactions</span>
+        <span class="ar-text">عدادات متحركة وتفاعلات دقيقة</span>
+      </h3>
+      <p>
+        <span class="en-text">Hero metrics now animate from zero to their target values on scroll. Added scroll-to-top button, smooth focus indicators, and loading states on form submission for better perceived performance.</span>
+        <span class="ar-text">أرقام البطل الآن تتحرك من الصفر إلى قيمتها المستهدفة عند التمرير. أضفنا زر العودة للأعلى، ومؤشرات تركيز سلسة، وحالات تحميل عند إرسال النموذج لأداء ملموس أفضل.</span>
+      </p>
+      <span class="pill ux"><span class="en-text">UX Enhancement</span><span class="ar-text">تحسين UX</span></span>
+    </div>
+
+    <!-- Security 1 -->
+    <div class="audit-card security fade-up">
+      <div class="audit-num">04</div>
+      <div class="audit-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <h3>
+        <span class="en-text">Content Security Policy & Headers</span>
+        <span class="ar-text">سياسة أمان المحتوى والعناوين</span>
+      </h3>
+      <p>
+        <span class="en-text">Implemented CSP meta tags to prevent XSS attacks, added X-Content-Type-Options nosniff to prevent MIME type sniffing, and strict referrer policy to prevent information leakage across origins.</span>
+        <span class="ar-text">طبّقنا وسوم CSP لمنع هجمات XSS، وأضفنا X-Content-Type-Options nosniff لمنع اكتشاف نوع MIME، وسياسة مُحيل صارمة لمنع تسريب المعلومات عبر الأصول.</span>
+      </p>
+      <span class="pill security"><span class="en-text">Security Enhancement</span><span class="ar-text">تحسين أمني</span></span>
+    </div>
+
+    <!-- Security 2 -->
+    <div class="audit-card security fade-up">
+      <div class="audit-num">05</div>
+      <div class="audit-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      </div>
+      <h3>
+        <span class="en-text">Secure Form — Anti-Spam, XSS & CSRF Protection</span>
+        <span class="ar-text">نموذج آمن — حماية من البريد المزعج و XSS و CSRF</span>
+      </h3>
+      <p>
+        <span class="en-text">CRM form rebuilt with honeypot anti-bot fields, input sanitisation against XSS, client-side CSRF tokens, rate-limiting (30s cooldown), and real-time bilingual validation with accessible error messages.</span>
+        <span class="ar-text">أعدنا بناء نموذج CRM بحقول honeypot لمكافحة الروبوتات، وتعقيم المدخلات ضد XSS، ورموز CSRF، وتحديد معدل الإرسال (30 ثانية)، وتحقق فوري ثنائي اللغة مع رسائل خطأ سهلة الوصول.</span>
+      </p>
+      <span class="pill security"><span class="en-text">Security Enhancement</span><span class="ar-text">تحسين أمني</span></span>
+    </div>
+
+    <!-- Security 3 -->
+    <div class="audit-card security fade-up">
+      <div class="audit-num">06</div>
+      <div class="audit-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+      </div>
+      <h3>
+        <span class="en-text">Performance & Accessibility Overhaul</span>
+        <span class="ar-text">إصلاح شامل للأداء وإمكانية الوصول</span>
+      </h3>
+      <p>
+        <span class="en-text">Added ARIA labels throughout, skip-navigation link, keyboard focus indicators, prefers-reduced-motion support, semantic HTML5 elements, and role attributes — critical for the Sense product's target audience.</span>
+        <span class="ar-text">أضفنا تسميات ARIA في كل مكان، رابط تخطي التنقل، مؤشرات تركيز لوحة المفاتيح، دعم prefers-reduced-motion، عناصر HTML5 دلالية — ضروري لجمهور منتج Sense المستهدف.</span>
+      </p>
+      <span class="pill perf"><span class="en-text">Performance & A11y</span><span class="ar-text">الأداء وإمكانية الوصول</span></span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     CRM / CONTACT
+═══════════════════════════════════════ -->
+<section class="crm-section" id="contact">
+  <div class="crm-wrapper">
+
+    <!-- LEFT INFO -->
+    <div class="crm-info">
+      <div class="section-tag"><span class="en-text">Get In Touch</span><span class="ar-text">تواصل معنا</span></div>
+      <h2 class="section-title display-font">
+        <span class="en-block">Let's Build<br/>Something<br/><span style="color:var(--cyan)">Together</span></span>
+        <span class="ar-block">لنبني<br/>شيئاً<br/><span style="color:var(--cyan)">معاً</span></span>
+      </h2>
+      <p>
+        <span class="en-text">Whether you're a startup, enterprise, or government entity — our team is ready to listen, advise, and deliver. We respond within 24 hours.</span>
+        <span class="ar-text">سواء كنت شركة ناشئة أو مؤسسة أو جهة حكومية — فريقنا جاهز للاستماع والتوجيه والتنفيذ. نرد خلال 24 ساعة.</span>
+      </p>
+      <div class="contact-methods">
+        <div class="contact-item">
+          <div class="contact-icon" aria-hidden="true">📧</div>
+          <div>
+            <div class="c-label"><span class="en-text">Email</span><span class="ar-text">البريد</span></div>
+            <div class="c-val">info@app.sa</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon" aria-hidden="true">📱</div>
+          <div>
+            <div class="c-label"><span class="en-text">WhatsApp</span><span class="ar-text">واتساب</span></div>
+            <div class="c-val" dir="ltr">0555992252</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon" aria-hidden="true">📍</div>
+          <div>
+            <div class="c-label"><span class="en-text">Location</span><span class="ar-text">الموقع</span></div>
+            <div class="c-val"><span class="en-text">King Abdullah Financial District, Riyadh</span><span class="ar-text">مركز الملك عبدالله المالي، الرياض</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CRM DASHBOARD -->
+      <div class="crm-dashboard" id="crmDashboard">
+        <div class="crm-dash-title">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+          <span class="en-text">CRM Dashboard</span>
+          <span class="ar-text">لوحة CRM</span>
+        </div>
+        <div class="crm-stats">
+          <div class="crm-stat">
+            <div class="stat-num" id="totalLeads">0</div>
+            <div class="stat-label"><span class="en-text">Total Leads</span><span class="ar-text">إجمالي العملاء</span></div>
+          </div>
+          <div class="crm-stat">
+            <div class="stat-num" id="todayLeads">0</div>
+            <div class="stat-label"><span class="en-text">Today</span><span class="ar-text">اليوم</span></div>
+          </div>
+          <div class="crm-stat">
+            <div class="stat-num" id="topProduct">—</div>
+            <div class="stat-label"><span class="en-text">Top Product</span><span class="ar-text">الأكثر طلباً</span></div>
+          </div>
+        </div>
+        <div class="crm-submissions" id="crmSubmissions"></div>
+        <button class="crm-clear-btn" id="crmClearBtn">
+          <span class="en-text">Clear All Data</span>
+          <span class="ar-text">مسح جميع البيانات</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- RIGHT FORM -->
+    <div class="crm-form-wrapper fade-up">
+      <!-- FORM TABS -->
+      <div class="form-tabs" role="tablist">
+        <button class="form-tab active" role="tab" data-tab="inquiry" aria-selected="true">
+          <span class="en-text">Inquiry</span>
+          <span class="ar-text">استفسار</span>
+        </button>
+        <button class="form-tab" role="tab" data-tab="demo" aria-selected="false">
+          <span class="en-text">Request Demo</span>
+          <span class="ar-text">طلب عرض</span>
+        </button>
+        <button class="form-tab" role="tab" data-tab="support" aria-selected="false">
+          <span class="en-text">Support</span>
+          <span class="ar-text">دعم فني</span>
+        </button>
+      </div>
+
+      <form id="crmForm" novalidate autocomplete="on">
+        <!-- CSRF Token -->
+        <input type="hidden" name="_csrf" id="csrfToken" />
+        <!-- HONEYPOT -->
+        <div class="hp-field" aria-hidden="true">
+          <input type="text" name="_honey" tabindex="-1" autocomplete="off" />
+        </div>
+        <!-- Inquiry Type -->
+        <input type="hidden" name="inquiry_type" id="inquiryType" value="inquiry" />
+
+        <div class="form-row">
+          <div class="field">
+            <label for="fname">
+              <span class="en-text">First Name *</span>
+              <span class="ar-text">الاسم الأول *</span>
+            </label>
+            <input type="text" id="fname" name="first_name" autocomplete="given-name"
+              required minlength="2" aria-required="true" />
+            <span class="err-msg" role="alert">
+              <span class="en-text">Please enter your first name</span>
+              <span class="ar-text">يرجى إدخال اسمك الأول</span>
+            </span>
+          </div>
+          <div class="field">
+            <label for="lname">
+              <span class="en-text">Last Name *</span>
+              <span class="ar-text">اسم العائلة *</span>
+            </label>
+            <input type="text" id="lname" name="last_name" autocomplete="family-name"
+              required minlength="2" aria-required="true" />
+            <span class="err-msg" role="alert">
+              <span class="en-text">Please enter your last name</span>
+              <span class="ar-text">يرجى إدخال اسم عائلتك</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="email">
+            <span class="en-text">Email Address *</span>
+            <span class="ar-text">البريد الإلكتروني *</span>
+          </label>
+          <input type="email" id="email" name="email" autocomplete="email"
+            required aria-required="true" />
+          <span class="err-msg" role="alert">
+            <span class="en-text">Please enter a valid email address</span>
+            <span class="ar-text">يرجى إدخال بريد إلكتروني صحيح</span>
+          </span>
+        </div>
+
+        <div class="field">
+          <label for="phone">
+            <span class="en-text">Phone Number</span>
+            <span class="ar-text">رقم الهاتف</span>
+          </label>
+          <input type="tel" id="phone" name="phone" autocomplete="tel" dir="ltr"
+            pattern="[\+]?[0-9\s\-]{7,15}" />
+          <span class="err-msg" role="alert">
+            <span class="en-text">Please enter a valid phone number</span>
+            <span class="ar-text">يرجى إدخال رقم هاتف صحيح</span>
+          </span>
+        </div>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="org">
+              <span class="en-text">Organisation</span>
+              <span class="ar-text">المنظمة</span>
+            </label>
+            <input type="text" id="org" name="organisation" autocomplete="organization" />
+          </div>
+          <div class="field">
+            <label for="product">
+              <span class="en-text">Interested In</span>
+              <span class="ar-text">مهتم بـ</span>
+            </label>
+            <select id="product" name="product_interest">
+              <option value="" data-en="Select a product" data-ar="اختر منتجاً">Select a product</option>
+              <option value="matjrai">MatjrAI</option>
+              <option value="diriyah">Diriyah Live</option>
+              <option value="sense">Sense</option>
+              <option value="custom" data-en="Custom Development" data-ar="تطوير مخصص">Custom Development</option>
+              <option value="other" data-en="Other / General Inquiry" data-ar="استفسار عام">Other / General Inquiry</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="message">
+            <span class="en-text">Your Message *</span>
+            <span class="ar-text">رسالتك *</span>
+          </label>
+          <textarea id="message" name="message" required minlength="20" aria-required="true"></textarea>
+          <span class="err-msg" role="alert">
+            <span class="en-text">Message must be at least 20 characters</span>
+            <span class="ar-text">يجب أن تكون الرسالة 20 حرفاً على الأقل</span>
+          </span>
+        </div>
+
+        <button type="submit" class="submit-btn" id="submitBtn">
+          <span class="btn-text">
+            <span class="en-text">Send Message</span>
+            <span class="ar-text">إرسال الرسالة</span>
+          </span>
+          <div class="spinner"></div>
+          <svg class="btn-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </form>
+
+      <!-- SUCCESS STATE -->
+      <div class="form-success" id="formSuccess">
+        <div class="check">✓</div>
+        <h3 class="display-font">
+          <span class="en-text">Message Sent!</span>
+          <span class="ar-text">تم الإرسال!</span>
+        </h3>
+        <p>
+          <span class="en-text">Thank you for reaching out. Our team will respond within 24 hours.</span>
+          <span class="ar-text">شكراً لتواصلك. سيرد فريقنا خلال 24 ساعة.</span>
+        </p>
+        <button class="btn-outline" id="resetForm" style="margin-top:8px">
+          <span class="en-text">Send Another</span>
+          <span class="ar-text">أرسل رسالة أخرى</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════ -->
+<footer role="contentinfo">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="logo display-font">Orbita</div>
+      <p>
+        <span class="en-text">Saudi-born digital products studio. Building the future of the Kingdom through intelligent software.</span>
+        <span class="ar-text">استوديو منتجات رقمية سعودي. نبني مستقبل المملكة من خلال البرمجيات الذكية.</span>
+      </p>
+    </div>
+    <div class="footer-col">
+      <h4><span class="en-text">Products</span><span class="ar-text">المنتجات</span></h4>
+      <ul>
+        <li><a href="#products">MatjrAI</a></li>
+        <li><a href="#products">Diriyah Live</a></li>
+        <li><a href="#products">Sense</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4><span class="en-text">Company</span><span class="ar-text">الشركة</span></h4>
+      <ul>
+        <li><a href="#"><span class="en-text">About</span><span class="ar-text">عن الشركة</span></a></li>
+        <li><a href="#"><span class="en-text">Careers</span><span class="ar-text">الوظائف</span></a></li>
+        <li><a href="#"><span class="en-text">Blog</span><span class="ar-text">المدونة</span></a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4><span class="en-text">Legal</span><span class="ar-text">قانوني</span></h4>
+      <ul>
+        <li><a href="#"><span class="en-text">Privacy Policy</span><span class="ar-text">سياسة الخصوصية</span></a></li>
+        <li><a href="#"><span class="en-text">Terms of Service</span><span class="ar-text">شروط الخدمة</span></a></li>
+        <li><a href="#"><span class="en-text">Security</span><span class="ar-text">الأمان</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Orbita. <span class="en-text">All rights reserved.</span><span class="ar-text">جميع الحقوق محفوظة.</span></span>
+    <span>
+      <span class="en-text">Built in</span><span class="ar-text">صُنع في</span> 🇸🇦 <span class="en-text">Saudi Arabia</span><span class="ar-text">المملكة العربية السعودية</span>
+    </span>
+  </div>
+</footer>
+
+<!-- SCROLL TO TOP -->
+<button class="scroll-top" id="scrollTop" aria-label="Scroll to top">↑</button>
+
+<!-- TOAST -->
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* ─────────────────────────────────────────
+   UTILITY: Generate CSRF Token
+───────────────────────────────────────── */
+function generateCSRF() {
+  const arr = new Uint8Array(32);
+  crypto.getRandomValues(arr);
+  return Array.from(arr, b => b.toString(16).padStart(2, '0')).join('');
+}
+document.getElementById('csrfToken').value = generateCSRF();
+
+/* ─────────────────────────────────────────
+   LANGUAGE TOGGLE
+───────────────────────────────────────── */
+const html = document.documentElement;
+const langBtn = document.getElementById('langToggle');
+const langLabel = document.getElementById('langLabel');
+
+function setLanguage(lang) {
+  const isAr = lang === 'ar';
+  html.setAttribute('dir', isAr ? 'rtl' : 'ltr');
+  html.setAttribute('lang', lang);
+  html.setAttribute('data-lang', lang);
+  langLabel.textContent = isAr ? 'English' : 'العربية';
+  // Update select options text
+  document.querySelectorAll('select option[data-en]').forEach(opt => {
+    opt.textContent = isAr ? opt.getAttribute('data-ar') : opt.getAttribute('data-en');
+  });
+  // Save preference
+  try { localStorage.setItem('orbita_lang', lang); } catch(e) {}
+}
+
+langBtn.addEventListener('click', () => {
+  const isAR = html.getAttribute('dir') === 'rtl';
+  setLanguage(isAR ? 'en' : 'ar');
+});
+
+// Restore saved language
+try {
+  const saved = localStorage.getItem('orbita_lang');
+  if (saved) setLanguage(saved);
+} catch(e) {}
+
+/* ─────────────────────────────────────────
+   HAMBURGER MENU
+───────────────────────────────────────── */
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+const mobileOverlay = document.getElementById('mobileOverlay');
+
+function toggleMenu(open) {
+  const isOpen = typeof open === 'boolean' ? open : !hamburger.classList.contains('open');
+  hamburger.classList.toggle('open', isOpen);
+  mobileMenu.classList.toggle('open', isOpen);
+  mobileOverlay.classList.toggle('open', isOpen);
+  hamburger.setAttribute('aria-expanded', isOpen);
+  document.body.style.overflow = isOpen ? 'hidden' : '';
+}
+
+hamburger.addEventListener('click', () => toggleMenu());
+mobileOverlay.addEventListener('click', () => toggleMenu(false));
+document.querySelectorAll('.mobile-link').forEach(link => {
+  link.addEventListener('click', () => toggleMenu(false));
+});
+
+// Close on Escape
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && hamburger.classList.contains('open')) toggleMenu(false);
+});
+
+/* ─────────────────────────────────────────
+   NAV SCROLL EFFECT
+───────────────────────────────────────── */
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 40);
+}, { passive: true });
+
+/* ─────────────────────────────────────────
+   SCROLL TO TOP
+───────────────────────────────────────── */
+const scrollTopBtn = document.getElementById('scrollTop');
+window.addEventListener('scroll', () => {
+  scrollTopBtn.classList.toggle('visible', window.scrollY > 600);
+}, { passive: true });
+scrollTopBtn.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+/* ─────────────────────────────────────────
+   SCROLL FADE-IN
+───────────────────────────────────────── */
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.fade-up').forEach((el, i) => {
+  el.style.transitionDelay = `${(i % 4) * 0.07}s`;
+  observer.observe(el);
+});
+
+/* ─────────────────────────────────────────
+   ANIMATED COUNTERS
+───────────────────────────────────────── */
+const counterObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const nums = entry.target.querySelectorAll('.num[data-target]');
+      nums.forEach(num => {
+        const target = parseInt(num.dataset.target);
+        const suffix = num.querySelector('span') ? num.querySelector('span').outerHTML : '';
+        let current = 0;
+        const step = Math.max(1, Math.ceil(target / 40));
+        const timer = setInterval(() => {
+          current += step;
+          if (current >= target) {
+            current = target;
+            clearInterval(timer);
+          }
+          num.innerHTML = current + suffix;
+        }, 30);
+      });
+      counterObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.3 });
+
+document.querySelectorAll('.hero-metrics').forEach(el => counterObserver.observe(el));
+
+/* ─────────────────────────────────────────
+   FORM TABS
+───────────────────────────────────────── */
+document.querySelectorAll('.form-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.form-tab').forEach(t => {
+      t.classList.remove('active');
+      t.setAttribute('aria-selected', 'false');
+    });
+    tab.classList.add('active');
+    tab.setAttribute('aria-selected', 'true');
+    document.getElementById('inquiryType').value = tab.dataset.tab;
+  });
+});
+
+/* ─────────────────────────────────────────
+   CRM — LOCAL STORAGE PERSISTENCE
+───────────────────────────────────────── */
+const CRM_KEY = 'orbita_crm_leads';
+
+function getCRMData() {
+  try {
+    return JSON.parse(localStorage.getItem(CRM_KEY)) || [];
+  } catch(e) { return []; }
+}
+
+function saveCRMData(data) {
+  try { localStorage.setItem(CRM_KEY, JSON.stringify(data)); } catch(e) {}
+}
+
+function renderDashboard() {
+  const data = getCRMData();
+  const dashboard = document.getElementById('crmDashboard');
+  const totalEl = document.getElementById('totalLeads');
+  const todayEl = document.getElementById('todayLeads');
+  const topEl = document.getElementById('topProduct');
+  const subsEl = document.getElementById('crmSubmissions');
+
+  if (data.length === 0) {
+    dashboard.classList.remove('has-data');
+    return;
+  }
+
+  dashboard.classList.add('has-data');
+  totalEl.textContent = data.length;
+
+  // Today's leads
+  const today = new Date().toDateString();
+  const todayCount = data.filter(d => new Date(d.timestamp).toDateString() === today).length;
+  todayEl.textContent = todayCount;
+
+  // Top product
+  const productCounts = {};
+  data.forEach(d => {
+    if (d.product_interest) {
+      productCounts[d.product_interest] = (productCounts[d.product_interest] || 0) + 1;
+    }
+  });
+  const topProduct = Object.entries(productCounts).sort((a,b) => b[1]-a[1])[0];
+  topEl.textContent = topProduct ? topProduct[0] : '—';
+
+  // Render submissions
+  subsEl.innerHTML = data.slice().reverse().slice(0, 20).map(d => `
+    <div class="crm-sub-item">
+      <div>
+        <div class="crm-sub-name">${escapeHTML(d.first_name)} ${escapeHTML(d.last_name)}</div>
+        <div class="crm-sub-time">${escapeHTML(d.email)} · ${new Date(d.timestamp).toLocaleDateString()}</div>
+      </div>
+      <span class="crm-sub-product ${escapeHTML(d.product_interest || 'other')}">${escapeHTML(d.product_interest || 'general')}</span>
+    </div>
+  `).join('');
+}
+
+// Escape HTML for safe rendering
+function escapeHTML(str) {
+  if (!str) return '';
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+// Init dashboard
+renderDashboard();
+
+// Clear CRM
+document.getElementById('crmClearBtn').addEventListener('click', () => {
+  const isAr = html.getAttribute('dir') === 'rtl';
+  if (confirm(isAr ? 'هل أنت متأكد من حذف جميع البيانات؟' : 'Are you sure you want to clear all CRM data?')) {
+    try { localStorage.removeItem(CRM_KEY); } catch(e) {}
+    renderDashboard();
+    showToast(isAr ? 'تم مسح جميع البيانات' : 'All CRM data cleared');
+  }
+});
+
+/* ─────────────────────────────────────────
+   CRM FORM — VALIDATION & SUBMISSION
+───────────────────────────────────────── */
+const form = document.getElementById('crmForm');
+const successDiv = document.getElementById('formSuccess');
+const submitBtn = document.getElementById('submitBtn');
+const resetBtn = document.getElementById('resetForm');
+const isAR = () => html.getAttribute('dir') === 'rtl';
+
+// Sanitise input
+function sanitise(str) {
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+// Validate a single field
+function validateField(field) {
+  const type = field.type;
+  let valid = true;
+  if (field.required && !field.value.trim()) valid = false;
+  if (type === 'email' && field.value) {
+    valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value);
+  }
+  if (type === 'tel' && field.value && field.pattern) {
+    valid = new RegExp(field.pattern).test(field.value);
+  }
+  if (field.minLength && field.value.trim().length < field.minLength) valid = false;
+
+  // Max length security check
+  if (field.value.length > 2000) valid = false;
+
+  field.classList.toggle('error', !valid);
+  return valid;
+}
+
+// Live validation on blur
+['fname','lname','email','phone','message'].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) {
+    el.addEventListener('blur', () => validateField(el));
+    el.addEventListener('input', () => {
+      if (el.classList.contains('error')) validateField(el);
+    });
+  }
+});
+
+// Rate limit
+let lastSubmit = 0;
+let submitCount = 0;
+
+form.addEventListener('submit', async e => {
+  e.preventDefault();
+
+  // Honeypot check
+  const honey = form.querySelector('[name="_honey"]');
+  if (honey && honey.value) return;
+
+  // Rate limit — 30s between submissions, max 10 per session
+  const now = Date.now();
+  if (now - lastSubmit < 30000) {
+    showToast(isAR() ? 'يرجى الانتظار قبل الإرسال مجدداً' : 'Please wait before submitting again.', 'warn');
+    return;
+  }
+  if (submitCount >= 10) {
+    showToast(isAR() ? 'تم تجاوز الحد الأقصى للإرسال' : 'Maximum submissions reached for this session.', 'error');
+    return;
+  }
+
+  // Validate all required fields
+  const fields = ['fname','lname','email','message'];
+  let allValid = true;
+  fields.forEach(id => {
+    const el = document.getElementById(id);
+    if (el && !validateField(el)) allValid = false;
+  });
+
+  // Validate phone if filled
+  const phoneEl = document.getElementById('phone');
+  if (phoneEl && phoneEl.value && !validateField(phoneEl)) allValid = false;
+
+  if (!allValid) {
+    showToast(isAR() ? 'يرجى تصحيح الأخطاء أولاً' : 'Please fix the errors above.', 'error');
+    // Focus first error field
+    const firstError = form.querySelector('.error');
+    if (firstError) firstError.focus();
+    return;
+  }
+
+  // Gather and sanitise data
+  const data = {
+    first_name: sanitise(document.getElementById('fname').value.trim()),
+    last_name:  sanitise(document.getElementById('lname').value.trim()),
+    email:      sanitise(document.getElementById('email').value.trim()),
+    phone:      sanitise(document.getElementById('phone').value.trim()),
+    organisation: sanitise(document.getElementById('org').value.trim()),
+    product_interest: document.getElementById('product').value,
+    inquiry_type: document.getElementById('inquiryType').value,
+    message:    sanitise(document.getElementById('message').value.trim()),
+    lang:       isAR() ? 'ar' : 'en',
+    timestamp:  new Date().toISOString(),
+    csrf:       document.getElementById('csrfToken').value,
+  };
+
+  // Submit loading state
+  submitBtn.disabled = true;
+  submitBtn.classList.add('loading');
+
+  try {
+    // Save to localStorage CRM
+    const crmData = getCRMData();
+    crmData.push(data);
+    saveCRMData(crmData);
+
+    // Simulate API delay (replace with real endpoint)
+    await new Promise(r => setTimeout(r, 1200));
+
+    lastSubmit = Date.now();
+    submitCount++;
+
+    // Regenerate CSRF token
+    document.getElementById('csrfToken').value = generateCSRF();
+
+    // Show success
+    form.style.display = 'none';
+    successDiv.style.display = 'flex';
+    showToast(isAR() ? 'تم إرسال رسالتك بنجاح ✓' : 'Message delivered successfully ✓');
+
+    // Update dashboard
+    renderDashboard();
+
+  } catch(err) {
+    showToast(isAR() ? 'حدث خطأ، يرجى المحاولة لاحقاً' : 'Something went wrong. Please try again.', 'error');
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.classList.remove('loading');
+  }
+});
+
+resetBtn.addEventListener('click', () => {
+  form.reset();
+  form.querySelectorAll('.error').forEach(f => f.classList.remove('error'));
+  submitBtn.disabled = false;
+  submitBtn.classList.remove('loading');
+  document.getElementById('csrfToken').value = generateCSRF();
+  // Reset tabs
+  document.querySelectorAll('.form-tab').forEach(t => {
+    t.classList.remove('active');
+    t.setAttribute('aria-selected', 'false');
+  });
+  document.querySelector('.form-tab[data-tab="inquiry"]').classList.add('active');
+  document.querySelector('.form-tab[data-tab="inquiry"]').setAttribute('aria-selected', 'true');
+  document.getElementById('inquiryType').value = 'inquiry';
+  successDiv.style.display = 'none';
+  form.style.display = 'block';
+});
+
+/* ─────────────────────────────────────────
+   TOAST NOTIFICATIONS
+───────────────────────────────────────── */
+let toastTimer;
+function showToast(msg, type = 'success') {
+  const toast = document.getElementById('toast');
+  toast.textContent = msg;
+  const color = type === 'error' ? 'var(--danger)' : type === 'warn' ? 'var(--warn)' : 'var(--cyan)';
+  const isRTL = html.getAttribute('dir') === 'rtl';
+  toast.style.borderLeftColor = isRTL ? 'transparent' : color;
+  toast.style.borderRightColor = isRTL ? color : 'transparent';
+  toast.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toast.classList.remove('show'), 3500);
+}
+</script>
+</body>
+</html>
