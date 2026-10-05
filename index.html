@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Orbita — Digital Products Studio</title>
-<meta name="description" content="Orbita — Building the future of Saudi Arabia through innovative digital products and intelligent software." />
+<title>ORBITA - Apps powered by ORBITA | تطبيقات مدعومة بواسطة أوربيتا</title>
+<meta name="description" content="Digital services developed by ORBITA using secure and scalable platforms for government entities and companies." />
 <!-- Security: X-Content-Type-Options & Referrer Policy -->
 <meta http-equiv="X-Content-Type-Options" content="nosniff" />
 <meta name="referrer" content="strict-origin-when-cross-origin" />
@@ -679,6 +679,66 @@ html[dir="rtl"] .hero-badge::before{order:2;}
 .submit-btn.loading .spinner{display:block;}
 .submit-btn.loading .btn-text{display:none;}
 @keyframes spin{to{transform:rotate(360deg);}}
+
+/* ─────────────────────────────────────────
+   ABOUT SECTION
+───────────────────────────────────────── */
+.about-section{background:var(--ink2);}
+.about-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:60px;align-items:start;margin-top:56px;
+}
+@media(max-width:768px){.about-grid{grid-template-columns:1fr;gap:32px;}}
+.about-text p{color:var(--muted);line-height:1.8;margin-bottom:16px;font-size:1.05rem;}
+.about-values{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px;}
+@media(max-width:480px){.about-values{grid-template-columns:1fr;}}
+.about-value{
+  background:var(--ink3);border:1px solid var(--border);
+  border-radius:var(--r2);padding:24px;transition:var(--trans);
+}
+.about-value:hover{border-color:var(--cyan);transform:translateY(-3px);}
+.about-value-icon{
+  width:40px;height:40px;border-radius:10px;
+  background:rgba(88,197,199,.1);color:var(--cyan);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:14px;font-size:1.2rem;
+}
+.about-value h4{
+  font-family:var(--ff-en);font-weight:700;font-size:.95rem;margin-bottom:6px;
+}
+html[dir="rtl"] .about-value h4{font-family:var(--ff-ar);}
+.about-value p{font-size:.85rem;color:var(--muted);line-height:1.6;margin:0;}
+
+/* ─────────────────────────────────────────
+   SERVICES SECTION
+───────────────────────────────────────── */
+.services-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:24px;margin-top:56px;
+}
+.service-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--r2);padding:32px;
+  transition:var(--trans);position:relative;overflow:hidden;
+}
+.service-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--cyan),var(--gold));opacity:0;
+  transition:var(--trans);
+}
+.service-card:hover{border-color:var(--cyan);transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.4);}
+.service-card:hover::before{opacity:1;}
+.service-icon{
+  width:48px;height:48px;border-radius:14px;
+  background:rgba(88,197,199,.1);color:var(--cyan);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:20px;font-size:1.3rem;
+}
+.service-card h3{
+  font-family:var(--ff-en);font-weight:700;font-size:1.1rem;margin-bottom:10px;
+}
+html[dir="rtl"] .service-card h3{font-family:var(--ff-ar);}
+.service-card p{font-size:.9rem;color:var(--muted);line-height:1.65;}
 </style>
 </head>
 <body>
@@ -697,8 +757,9 @@ html[dir="rtl"] .hero-badge::before{order:2;}
     Orbita
   </a>
   <div class="nav-links">
+    <a href="#about"><span class="en-text">About</span><span class="ar-text">حولنا</span></a>
+    <a href="#services"><span class="en-text">Services</span><span class="ar-text">خدماتنا</span></a>
     <a href="#products"><span class="en-text">Products</span><span class="ar-text">المنتجات</span></a>
-    <a href="#enhancements"><span class="en-text">Insights</span><span class="ar-text">الرؤى</span></a>
     <a href="#contact"><span class="en-text">Contact</span><span class="ar-text">تواصل معنا</span></a>
   </div>
   <div class="nav-right">
@@ -716,8 +777,9 @@ html[dir="rtl"] .hero-badge::before{order:2;}
 <div class="mobile-overlay" id="mobileOverlay"></div>
 <div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile navigation">
   <a href="#home" class="mobile-link"><span class="en-text">Home</span><span class="ar-text">الرئيسية</span></a>
+  <a href="#about" class="mobile-link"><span class="en-text">About</span><span class="ar-text">حولنا</span></a>
+  <a href="#services" class="mobile-link"><span class="en-text">Services</span><span class="ar-text">خدماتنا</span></a>
   <a href="#products" class="mobile-link"><span class="en-text">Products</span><span class="ar-text">المنتجات</span></a>
-  <a href="#enhancements" class="mobile-link"><span class="en-text">Insights</span><span class="ar-text">الرؤى</span></a>
   <a href="#contact" class="mobile-link"><span class="en-text">Contact</span><span class="ar-text">تواصل معنا</span></a>
 </div>
 
@@ -727,30 +789,30 @@ html[dir="rtl"] .hero-badge::before{order:2;}
 <section class="hero" id="home">
   <div class="hero-content" id="main-content">
     <div class="hero-badge">
-      <span class="en-text">Powering Vision 2030 Products</span>
-      <span class="ar-text">نُحرِّك منتجات رؤية 2030</span>
+      <span class="en-text">Digital Products Studio — Riyadh</span>
+      <span class="ar-text">استوديو منتجات رقمية — الرياض</span>
     </div>
     <h1 class="display-font">
       <span class="en-block">
-        We Build<br/><span class="accent">Digital</span> Products<br/>That <span class="gold">Matter</span>
+        Apps Powered<br/>by <span class="accent">Orbita</span>
       </span>
       <span class="ar-block">
-        نبني منتجاتٍ<br/><span class="accent">رقمية</span> تُحدث<br/>فارقاً <span class="gold">حقيقياً</span>
+        تطبيقات مدعومة<br/>بواسطة <span class="accent">أوربيتا</span>
       </span>
     </h1>
     <p>
-      <span class="en-text">Orbita is a Saudi-born digital products studio engineering the next generation of intelligent software — from AI commerce to cultural heritage tech.</span>
-      <span class="ar-text">Orbita استوديو سعودي لتطوير المنتجات الرقمية — من الذكاء الاصطناعي في التجارة إلى تقنيات التراث الثقافي.</span>
+      <span class="en-text">Digital services developed by Orbita using secure and scalable platforms for government entities and companies.</span>
+      <span class="ar-text">خدمات رقمية مطورة بواسطة أوربيتا باستخدام منصات آمنة وقابلة للتوسع للجهات الحكومية والشركات.</span>
     </p>
     <div class="cta-row">
-      <a href="#products" class="btn-primary">
-        <span class="en-text">Explore Products</span>
-        <span class="ar-text">استكشف المنتجات</span>
+      <a href="#contact" class="btn-primary">
+        <span class="en-text">Start Your Project With Us</span>
+        <span class="ar-text">ابدأ مشروعك معنا</span>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
-      <a href="#contact" class="btn-outline">
-        <span class="en-text">Get in Touch</span>
-        <span class="ar-text">تواصل معنا</span>
+      <a href="#products" class="btn-outline">
+        <span class="en-text">Explore Products</span>
+        <span class="ar-text">استكشف المنتجات</span>
       </a>
     </div>
     <div class="hero-metrics">
@@ -775,30 +837,102 @@ html[dir="rtl"] .hero-badge::before{order:2;}
 </section>
 
 <!-- ═══════════════════════════════════════
-     SECURITY BAR
+     ABOUT
 ═══════════════════════════════════════ -->
-<div class="security-bar" role="complementary" aria-label="Security certifications">
-  <div class="sec-badge">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-    <span class="en-text">HTTPS Encrypted</span><span class="ar-text">HTTPS مشفّر</span>
+<section class="about-section" id="about">
+  <div class="section-tag"><span class="en-text">Who We Are</span><span class="ar-text">من نحن</span></div>
+  <h2 class="section-title display-font fade-up">
+    <span class="en-block">A Saudi Studio<br/>With Global Ambition</span>
+    <span class="ar-block">استوديو سعودي<br/>بطموح عالمي</span>
+  </h2>
+  <div class="about-grid">
+    <div class="about-text fade-up">
+      <p>
+        <span class="en-text">Orbita is a digital products studio born in Riyadh. We design and engineer software that serves the Kingdom's boldest ambitions — from AI-powered commerce to cultural heritage preservation and accessibility technology.</span>
+        <span class="ar-text">أوربيتا استوديو منتجات رقمية من الرياض. نصمم ونبني برمجيات تخدم أكبر طموحات المملكة — من التجارة المدعومة بالذكاء الاصطناعي إلى حفظ التراث الثقافي وتقنيات إمكانية الوصول.</span>
+      </p>
+      <p>
+        <span class="en-text">We work with government entities and enterprises who need more than a vendor — they need a technical partner who understands the Saudi market, builds with security-first principles, and ships products that real people use every day.</span>
+        <span class="ar-text">نعمل مع الجهات الحكومية والمؤسسات التي تحتاج أكثر من مزوّد خدمة — تحتاج شريكاً تقنياً يفهم السوق السعودي، ويبني بمبادئ الأمان أولاً، ويطلق منتجات يستخدمها الناس يومياً.</span>
+      </p>
+    </div>
+    <div class="about-values fade-up">
+      <div class="about-value">
+        <div class="about-value-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h4><span class="en-text">Security First</span><span class="ar-text">الأمان أولاً</span></h4>
+        <p><span class="en-text">PDPL-compliant, ISO-aligned, and OWASP-hardened from day one.</span><span class="ar-text">متوافق مع نظام حماية البيانات ومعايير ISO و OWASP من اليوم الأول.</span></p>
+      </div>
+      <div class="about-value">
+        <div class="about-value-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h4><span class="en-text">Bilingual Native</span><span class="ar-text">ثنائي اللغة</span></h4>
+        <p><span class="en-text">Arabic-first design with full RTL support and bilingual interfaces.</span><span class="ar-text">تصميم عربي أولاً مع دعم كامل لـ RTL وواجهات ثنائية اللغة.</span></p>
+      </div>
+      <div class="about-value">
+        <div class="about-value-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+        </div>
+        <h4><span class="en-text">Scalable</span><span class="ar-text">قابل للتوسع</span></h4>
+        <p><span class="en-text">Cloud-native architecture built to grow with your user base.</span><span class="ar-text">بنية سحابية مصممة للنمو مع قاعدة مستخدميك.</span></p>
+      </div>
+      <div class="about-value">
+        <div class="about-value-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        </div>
+        <h4><span class="en-text">AI-Powered</span><span class="ar-text">مدعوم بالذكاء الاصطناعي</span></h4>
+        <p><span class="en-text">Machine learning and automation woven into every product we ship.</span><span class="ar-text">تعلّم آلي وأتمتة مدمجة في كل منتج نطلقه.</span></p>
+      </div>
+    </div>
   </div>
-  <div class="sec-badge">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-    <span class="en-text">OWASP Compliant</span><span class="ar-text">متوافق مع OWASP</span>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SERVICES
+═══════════════════════════════════════ -->
+<section id="services">
+  <div class="section-tag"><span class="en-text">What We Do</span><span class="ar-text">ما نقدمه</span></div>
+  <h2 class="section-title display-font fade-up">
+    <span class="en-block">End-to-End<br/>Digital Capabilities</span>
+    <span class="ar-block">قدرات رقمية<br/>متكاملة</span>
+  </h2>
+  <p class="section-sub fade-up">
+    <span class="en-text">From concept to launch and beyond — we handle strategy, design, engineering, and operations.</span>
+    <span class="ar-text">من الفكرة إلى الإطلاق وما بعده — نتولى الاستراتيجية والتصميم والهندسة والتشغيل.</span>
+  </p>
+  <div class="services-grid">
+    <div class="service-card fade-up">
+      <div class="service-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+      </div>
+      <h3><span class="en-text">Software Development</span><span class="ar-text">تطوير البرمجيات</span></h3>
+      <p><span class="en-text">Custom web applications, platforms, and enterprise systems built with modern frameworks and clean architecture.</span><span class="ar-text">تطبيقات ويب ومنصات وأنظمة مؤسسية مبنية بأُطر حديثة وبنية نظيفة.</span></p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+      </div>
+      <h3><span class="en-text">Mobile Applications</span><span class="ar-text">تطبيقات الجوال</span></h3>
+      <p><span class="en-text">Native iOS and Android apps with seamless UX, offline-first design, and full Arabic/RTL support.</span><span class="ar-text">تطبيقات iOS و Android أصلية بتجربة سلسة وتصميم يعمل بدون إنترنت ودعم كامل للعربية.</span></p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      </div>
+      <h3><span class="en-text">AI & Automation</span><span class="ar-text">الذكاء الاصطناعي والأتمتة</span></h3>
+      <p><span class="en-text">Intelligent chatbots, RPA engines, computer vision, and NLP solutions — with Arabic language models.</span><span class="ar-text">روبوتات محادثة ذكية ومحركات أتمتة ورؤية حاسوبية ومعالجة لغة طبيعية — بنماذج عربية.</span></p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+      </div>
+      <h3><span class="en-text">Cloud & Infrastructure</span><span class="ar-text">السحابة والبنية التحتية</span></h3>
+      <p><span class="en-text">Scalable cloud architecture, DevOps pipelines, monitoring, and 99.9% uptime SLA for mission-critical systems.</span><span class="ar-text">بنية سحابية قابلة للتوسع وأنابيب DevOps ومراقبة واتفاقية توفر 99.9% للأنظمة الحساسة.</span></p>
+    </div>
   </div>
-  <div class="sec-badge">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
-    <span class="en-text">PDPL Ready</span><span class="ar-text">متوافق مع نظام حماية البيانات</span>
-  </div>
-  <div class="sec-badge">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-    <span class="en-text">ISO 27001 Aligned</span><span class="ar-text">متوافق مع ISO 27001</span>
-  </div>
-  <div class="sec-badge">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-    <span class="en-text">99.9% Uptime SLA</span><span class="ar-text">اتفاقية توفر 99.9%</span>
-  </div>
-</div>
+</section>
 
 <!-- ═══════════════════════════════════════
      PRODUCTS
@@ -905,127 +1039,7 @@ html[dir="rtl"] .hero-badge::before{order:2;}
 </section>
 
 <!-- ═══════════════════════════════════════
-     UX & SECURITY ENHANCEMENTS
-═══════════════════════════════════════ -->
-<section class="audit-section" id="enhancements">
-  <div class="section-tag"><span class="en-text">Site Enhancements</span><span class="ar-text">تحسينات الموقع</span></div>
-  <h2 class="section-title display-font fade-up">
-    <span class="en-block">6 Critical Upgrades<br/>Implemented Here</span>
-    <span class="ar-block">6 تحسينات حيوية<br/>مطبّقة في هذا الموقع</span>
-  </h2>
-  <p class="section-sub fade-up">
-    <span class="en-text">Based on a comprehensive UX and security audit of the original site — here's what we fixed and why it matters.</span>
-    <span class="ar-text">بناءً على مراجعة شاملة لتجربة المستخدم والأمان للموقع الأصلي — إليك ما أصلحناه ولماذا يهم.</span>
-  </p>
-  <div class="audit-grid">
-
-    <!-- UX 1 -->
-    <div class="audit-card ux fade-up">
-      <div class="audit-num">01</div>
-      <div class="audit-icon">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-      </div>
-      <h3>
-        <span class="en-text">Bilingual RTL-First Architecture</span>
-        <span class="ar-text">بنية RTL ثنائية اللغة</span>
-      </h3>
-      <p>
-        <span class="en-text">The original site had no Arabic support. We rebuilt the layout with CSS logical properties, Tajawal font for Arabic, and a seamless language toggle that flips all content and direction instantly — no page reload needed.</span>
-        <span class="ar-text">الموقع الأصلي كان يفتقر إلى دعم العربية. أعدنا بناء التخطيط بخصائص CSS المنطقية وخط تجوال للعربية وتبديل سلس للغة يعكس كل المحتوى والاتجاه فوراً — بدون إعادة تحميل.</span>
-      </p>
-      <span class="pill ux"><span class="en-text">UX Enhancement</span><span class="ar-text">تحسين UX</span></span>
-    </div>
-
-    <!-- UX 2 -->
-    <div class="audit-card ux fade-up">
-      <div class="audit-num">02</div>
-      <div class="audit-icon">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-      </div>
-      <h3>
-        <span class="en-text">Responsive Mobile Navigation</span>
-        <span class="ar-text">قائمة تنقل متجاوبة للجوال</span>
-      </h3>
-      <p>
-        <span class="en-text">Added a hamburger menu with slide-out drawer for mobile devices, animated transitions, overlay backdrop, and proper ARIA attributes for screen reader accessibility on all viewports.</span>
-        <span class="ar-text">أضفنا قائمة هامبرغر بدرج منزلق للأجهزة المحمولة، مع انتقالات متحركة، وخلفية معتمة، وسمات ARIA مناسبة لقارئات الشاشة على جميع أحجام الشاشات.</span>
-      </p>
-      <span class="pill ux"><span class="en-text">UX Enhancement</span><span class="ar-text">تحسين UX</span></span>
-    </div>
-
-    <!-- UX 3 -->
-    <div class="audit-card ux fade-up">
-      <div class="audit-num">03</div>
-      <div class="audit-icon">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-      </div>
-      <h3>
-        <span class="en-text">Animated Counters & Micro-interactions</span>
-        <span class="ar-text">عدادات متحركة وتفاعلات دقيقة</span>
-      </h3>
-      <p>
-        <span class="en-text">Hero metrics now animate from zero to their target values on scroll. Added scroll-to-top button, smooth focus indicators, and loading states on form submission for better perceived performance.</span>
-        <span class="ar-text">أرقام البطل الآن تتحرك من الصفر إلى قيمتها المستهدفة عند التمرير. أضفنا زر العودة للأعلى، ومؤشرات تركيز سلسة، وحالات تحميل عند إرسال النموذج لأداء ملموس أفضل.</span>
-      </p>
-      <span class="pill ux"><span class="en-text">UX Enhancement</span><span class="ar-text">تحسين UX</span></span>
-    </div>
-
-    <!-- Security 1 -->
-    <div class="audit-card security fade-up">
-      <div class="audit-num">04</div>
-      <div class="audit-icon">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-      </div>
-      <h3>
-        <span class="en-text">Content Security Policy & Headers</span>
-        <span class="ar-text">سياسة أمان المحتوى والعناوين</span>
-      </h3>
-      <p>
-        <span class="en-text">Implemented CSP meta tags to prevent XSS attacks, added X-Content-Type-Options nosniff to prevent MIME type sniffing, and strict referrer policy to prevent information leakage across origins.</span>
-        <span class="ar-text">طبّقنا وسوم CSP لمنع هجمات XSS، وأضفنا X-Content-Type-Options nosniff لمنع اكتشاف نوع MIME، وسياسة مُحيل صارمة لمنع تسريب المعلومات عبر الأصول.</span>
-      </p>
-      <span class="pill security"><span class="en-text">Security Enhancement</span><span class="ar-text">تحسين أمني</span></span>
-    </div>
-
-    <!-- Security 2 -->
-    <div class="audit-card security fade-up">
-      <div class="audit-num">05</div>
-      <div class="audit-icon">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-      </div>
-      <h3>
-        <span class="en-text">Secure Form — Anti-Spam, XSS & CSRF Protection</span>
-        <span class="ar-text">نموذج آمن — حماية من البريد المزعج و XSS و CSRF</span>
-      </h3>
-      <p>
-        <span class="en-text">CRM form rebuilt with honeypot anti-bot fields, input sanitisation against XSS, client-side CSRF tokens, rate-limiting (30s cooldown), and real-time bilingual validation with accessible error messages.</span>
-        <span class="ar-text">أعدنا بناء نموذج CRM بحقول honeypot لمكافحة الروبوتات، وتعقيم المدخلات ضد XSS، ورموز CSRF، وتحديد معدل الإرسال (30 ثانية)، وتحقق فوري ثنائي اللغة مع رسائل خطأ سهلة الوصول.</span>
-      </p>
-      <span class="pill security"><span class="en-text">Security Enhancement</span><span class="ar-text">تحسين أمني</span></span>
-    </div>
-
-    <!-- Security 3 -->
-    <div class="audit-card security fade-up">
-      <div class="audit-num">06</div>
-      <div class="audit-icon">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-      </div>
-      <h3>
-        <span class="en-text">Performance & Accessibility Overhaul</span>
-        <span class="ar-text">إصلاح شامل للأداء وإمكانية الوصول</span>
-      </h3>
-      <p>
-        <span class="en-text">Added ARIA labels throughout, skip-navigation link, keyboard focus indicators, prefers-reduced-motion support, semantic HTML5 elements, and role attributes — critical for the Sense product's target audience.</span>
-        <span class="ar-text">أضفنا تسميات ARIA في كل مكان، رابط تخطي التنقل، مؤشرات تركيز لوحة المفاتيح، دعم prefers-reduced-motion، عناصر HTML5 دلالية — ضروري لجمهور منتج Sense المستهدف.</span>
-      </p>
-      <span class="pill perf"><span class="en-text">Performance & A11y</span><span class="ar-text">الأداء وإمكانية الوصول</span></span>
-    </div>
-
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════
-     CRM / CONTACT
+     CONTACT
 ═══════════════════════════════════════ -->
 <section class="crm-section" id="contact">
   <div class="crm-wrapper">
@@ -1065,33 +1079,6 @@ html[dir="rtl"] .hero-badge::before{order:2;}
         </div>
       </div>
 
-      <!-- CRM DASHBOARD -->
-      <div class="crm-dashboard" id="crmDashboard">
-        <div class="crm-dash-title">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
-          <span class="en-text">CRM Dashboard</span>
-          <span class="ar-text">لوحة CRM</span>
-        </div>
-        <div class="crm-stats">
-          <div class="crm-stat">
-            <div class="stat-num" id="totalLeads">0</div>
-            <div class="stat-label"><span class="en-text">Total Leads</span><span class="ar-text">إجمالي العملاء</span></div>
-          </div>
-          <div class="crm-stat">
-            <div class="stat-num" id="todayLeads">0</div>
-            <div class="stat-label"><span class="en-text">Today</span><span class="ar-text">اليوم</span></div>
-          </div>
-          <div class="crm-stat">
-            <div class="stat-num" id="topProduct">—</div>
-            <div class="stat-label"><span class="en-text">Top Product</span><span class="ar-text">الأكثر طلباً</span></div>
-          </div>
-        </div>
-        <div class="crm-submissions" id="crmSubmissions"></div>
-        <button class="crm-clear-btn" id="crmClearBtn">
-          <span class="en-text">Clear All Data</span>
-          <span class="ar-text">مسح جميع البيانات</span>
-        </button>
-      </div>
     </div>
 
     <!-- RIGHT FORM -->
@@ -1242,6 +1229,32 @@ html[dir="rtl"] .hero-badge::before{order:2;}
 </section>
 
 <!-- ═══════════════════════════════════════
+     SECURITY BAR
+═══════════════════════════════════════ -->
+<div class="security-bar" role="complementary" aria-label="Security certifications">
+  <div class="sec-badge">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    <span class="en-text">HTTPS Encrypted</span><span class="ar-text">HTTPS مشفّر</span>
+  </div>
+  <div class="sec-badge">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+    <span class="en-text">OWASP Compliant</span><span class="ar-text">متوافق مع OWASP</span>
+  </div>
+  <div class="sec-badge">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+    <span class="en-text">PDPL Ready</span><span class="ar-text">متوافق مع نظام حماية البيانات</span>
+  </div>
+  <div class="sec-badge">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+    <span class="en-text">ISO 27001 Aligned</span><span class="ar-text">متوافق مع ISO 27001</span>
+  </div>
+  <div class="sec-badge">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+    <span class="en-text">99.9% Uptime SLA</span><span class="ar-text">اتفاقية توفر 99.9%</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
      FOOTER
 ═══════════════════════════════════════ -->
 <footer role="contentinfo">
@@ -1264,17 +1277,16 @@ html[dir="rtl"] .hero-badge::before{order:2;}
     <div class="footer-col">
       <h4><span class="en-text">Company</span><span class="ar-text">الشركة</span></h4>
       <ul>
-        <li><a href="#"><span class="en-text">About</span><span class="ar-text">عن الشركة</span></a></li>
-        <li><a href="#"><span class="en-text">Careers</span><span class="ar-text">الوظائف</span></a></li>
-        <li><a href="#"><span class="en-text">Blog</span><span class="ar-text">المدونة</span></a></li>
+        <li><a href="#about"><span class="en-text">About</span><span class="ar-text">حولنا</span></a></li>
+        <li><a href="#services"><span class="en-text">Services</span><span class="ar-text">خدماتنا</span></a></li>
+        <li><a href="#contact"><span class="en-text">Contact</span><span class="ar-text">تواصل معنا</span></a></li>
       </ul>
     </div>
     <div class="footer-col">
-      <h4><span class="en-text">Legal</span><span class="ar-text">قانوني</span></h4>
+      <h4><span class="en-text">Resources</span><span class="ar-text">المصادر</span></h4>
       <ul>
-        <li><a href="#"><span class="en-text">Privacy Policy</span><span class="ar-text">سياسة الخصوصية</span></a></li>
-        <li><a href="#"><span class="en-text">Terms of Service</span><span class="ar-text">شروط الخدمة</span></a></li>
-        <li><a href="#"><span class="en-text">Security</span><span class="ar-text">الأمان</span></a></li>
+        <li><a href="mailto:info@app.sa"><span class="en-text">Email Us</span><span class="ar-text">راسلنا</span></a></li>
+        <li><a href="tel:0555992252" dir="ltr">0555992252</a></li>
       </ul>
     </div>
   </div>
@@ -1442,86 +1454,7 @@ document.querySelectorAll('.form-tab').forEach(tab => {
 });
 
 /* ─────────────────────────────────────────
-   CRM — LOCAL STORAGE PERSISTENCE
-───────────────────────────────────────── */
-const CRM_KEY = 'orbita_crm_leads';
-
-function getCRMData() {
-  try {
-    return JSON.parse(localStorage.getItem(CRM_KEY)) || [];
-  } catch(e) { return []; }
-}
-
-function saveCRMData(data) {
-  try { localStorage.setItem(CRM_KEY, JSON.stringify(data)); } catch(e) {}
-}
-
-function renderDashboard() {
-  const data = getCRMData();
-  const dashboard = document.getElementById('crmDashboard');
-  const totalEl = document.getElementById('totalLeads');
-  const todayEl = document.getElementById('todayLeads');
-  const topEl = document.getElementById('topProduct');
-  const subsEl = document.getElementById('crmSubmissions');
-
-  if (data.length === 0) {
-    dashboard.classList.remove('has-data');
-    return;
-  }
-
-  dashboard.classList.add('has-data');
-  totalEl.textContent = data.length;
-
-  // Today's leads
-  const today = new Date().toDateString();
-  const todayCount = data.filter(d => new Date(d.timestamp).toDateString() === today).length;
-  todayEl.textContent = todayCount;
-
-  // Top product
-  const productCounts = {};
-  data.forEach(d => {
-    if (d.product_interest) {
-      productCounts[d.product_interest] = (productCounts[d.product_interest] || 0) + 1;
-    }
-  });
-  const topProduct = Object.entries(productCounts).sort((a,b) => b[1]-a[1])[0];
-  topEl.textContent = topProduct ? topProduct[0] : '—';
-
-  // Render submissions
-  subsEl.innerHTML = data.slice().reverse().slice(0, 20).map(d => `
-    <div class="crm-sub-item">
-      <div>
-        <div class="crm-sub-name">${escapeHTML(d.first_name)} ${escapeHTML(d.last_name)}</div>
-        <div class="crm-sub-time">${escapeHTML(d.email)} · ${new Date(d.timestamp).toLocaleDateString()}</div>
-      </div>
-      <span class="crm-sub-product ${escapeHTML(d.product_interest || 'other')}">${escapeHTML(d.product_interest || 'general')}</span>
-    </div>
-  `).join('');
-}
-
-// Escape HTML for safe rendering
-function escapeHTML(str) {
-  if (!str) return '';
-  const div = document.createElement('div');
-  div.textContent = str;
-  return div.innerHTML;
-}
-
-// Init dashboard
-renderDashboard();
-
-// Clear CRM
-document.getElementById('crmClearBtn').addEventListener('click', () => {
-  const isAr = html.getAttribute('dir') === 'rtl';
-  if (confirm(isAr ? 'هل أنت متأكد من حذف جميع البيانات؟' : 'Are you sure you want to clear all CRM data?')) {
-    try { localStorage.removeItem(CRM_KEY); } catch(e) {}
-    renderDashboard();
-    showToast(isAr ? 'تم مسح جميع البيانات' : 'All CRM data cleared');
-  }
-});
-
-/* ─────────────────────────────────────────
-   CRM FORM — VALIDATION & SUBMISSION
+   FORM — VALIDATION & SUBMISSION
 ───────────────────────────────────────── */
 const form = document.getElementById('crmForm');
 const successDiv = document.getElementById('formSuccess');
@@ -1629,11 +1562,6 @@ form.addEventListener('submit', async e => {
   submitBtn.classList.add('loading');
 
   try {
-    // Save to localStorage CRM
-    const crmData = getCRMData();
-    crmData.push(data);
-    saveCRMData(crmData);
-
     // Simulate API delay (replace with real endpoint)
     await new Promise(r => setTimeout(r, 1200));
 
@@ -1647,9 +1575,6 @@ form.addEventListener('submit', async e => {
     form.style.display = 'none';
     successDiv.style.display = 'flex';
     showToast(isAR() ? 'تم إرسال رسالتك بنجاح ✓' : 'Message delivered successfully ✓');
-
-    // Update dashboard
-    renderDashboard();
 
   } catch(err) {
     showToast(isAR() ? 'حدث خطأ، يرجى المحاولة لاحقاً' : 'Something went wrong. Please try again.', 'error');
