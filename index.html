@@ -39,6 +39,7 @@
   --success: #34d399;
   --warn:    #fbbf24;
   --purple:  #a78bfa;
+  --green:   #4ade80;
   --r:       14px;
   --r2:      24px;
   --ff-en:   'Space Grotesk', sans-serif;
@@ -383,6 +384,16 @@ html[dir="rtl"] .product-name{font-family:var(--ff-ar);}
 .diriyah .btn-product:hover{background:var(--gold);color:var(--ink);}
 .sense .btn-product{border-color:var(--purple);color:var(--purple);}
 .sense .btn-product:hover{background:var(--purple);color:var(--ink);}
+.product-card.feed .product-header{background:linear-gradient(135deg,#001a0a 0%,#002e1a 50%,#001a10 100%);}
+.product-card.feed .product-header::before{
+  content:'';position:absolute;top:-40px;right:-40px;
+  width:200px;height:200px;border-radius:50%;
+  background:radial-gradient(circle,rgba(74,222,128,.3),transparent 70%);
+}
+.feed .product-tag-line{color:var(--green);}
+.feed .feature-list li::before{background:rgba(74,222,128,.15);color:var(--green);}
+.feed .btn-product{border-color:var(--green);color:var(--green);}
+.feed .btn-product:hover{background:var(--green);color:var(--ink);}
 
 /* ─────────────────────────────────────────
    REVIEWS / TESTIMONIALS
@@ -554,6 +565,7 @@ html[dir="rtl"] .crm-dash-title{font-family:var(--ff-ar);}
 .crm-sub-product.matjrai{background:rgba(88,197,199,.12);color:var(--cyan);}
 .crm-sub-product.diriyah{background:rgba(254,190,16,.12);color:var(--gold);}
 .crm-sub-product.sense{background:rgba(167,139,250,.12);color:var(--purple);}
+.crm-sub-product.feed{background:rgba(74,222,128,.12);color:var(--green);}
 .crm-sub-product.custom,.crm-sub-product.other{background:rgba(255,255,255,.06);color:var(--muted);}
 .crm-sub-time{font-size:.75rem;color:var(--muted);}
 .crm-clear-btn{
@@ -817,7 +829,7 @@ html[dir="rtl"] .service-card h3{font-family:var(--ff-ar);}
     </div>
     <div class="hero-metrics">
       <div class="metric">
-        <div class="num" data-target="3">0<span>+</span></div>
+        <div class="num" data-target="4">0<span>+</span></div>
         <div class="label"><span class="en-text">Live Products</span><span class="ar-text">منتجات نشطة</span></div>
       </div>
       <div class="metric">
@@ -940,8 +952,8 @@ html[dir="rtl"] .service-card h3{font-family:var(--ff-ar);}
 <section id="products">
   <div class="section-tag"><span class="en-text">Our Products</span><span class="ar-text">منتجاتنا</span></div>
   <h2 class="section-title display-font fade-up">
-    <span class="en-block">Three Products.<br/>One Vision.</span>
-    <span class="ar-block">ثلاثة منتجات.<br/>رؤية واحدة.</span>
+    <span class="en-block">Four Products.<br/>One Vision.</span>
+    <span class="ar-block">أربعة منتجات.<br/>رؤية واحدة.</span>
   </h2>
   <p class="section-sub fade-up">
     <span class="en-text">Purpose-built for Saudi Arabia and beyond — each product solves a real problem with precision engineering and human-centred design.</span>
@@ -1000,8 +1012,8 @@ html[dir="rtl"] .service-card h3{font-family:var(--ff-ar);}
           <li role="listitem"><span class="en-text">Live cultural events, sports, and workshops</span><span class="ar-text">فعاليات ثقافية ورياضية وورش عمل مباشرة</span></li>
           <li role="listitem"><span class="en-text">Weather-aware recommendations & bilingual support</span><span class="ar-text">توصيات حسب الطقس ودعم ثنائي اللغة</span></li>
         </ul>
-        <a href="#contact" class="btn-product">
-          <span class="en-text">Request Demo</span><span class="ar-text">اطلب عرضاً</span>
+        <a href="https://www.diriyahlive.com" class="btn-product" target="_blank" rel="noopener">
+          <span class="en-text">Visit Diriyah Live</span><span class="ar-text">زُر درعية لايف</span>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
       </div>
@@ -1028,8 +1040,38 @@ html[dir="rtl"] .service-card h3{font-family:var(--ff-ar);}
           <li role="listitem"><span class="en-text">Arabic voice guidance with dialectal support</span><span class="ar-text">توجيه صوتي عربي بدعم اللهجات المحلية</span></li>
           <li role="listitem"><span class="en-text">WCAG 2.1 AAA accessibility compliant</span><span class="ar-text">متوافق مع معايير WCAG 2.1 AAA</span></li>
         </ul>
-        <a href="#contact" class="btn-product">
-          <span class="en-text">Request Demo</span><span class="ar-text">اطلب عرضاً</span>
+        <a href="https://www.sense-app.net" class="btn-product" target="_blank" rel="noopener">
+          <span class="en-text">Visit Sense</span><span class="ar-text">زُر Sense</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </article>
+
+    <!-- Feed -->
+    <article class="product-card feed fade-up" aria-label="Feed Product">
+      <div class="product-header">
+        <div class="product-logo-icon" style="width:80px;height:80px;border-radius:20px;background:linear-gradient(135deg,#166534,#22c55e);display:flex;align-items:center;justify-content:center;margin-bottom:16px;position:relative;z-index:1;">
+          <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c1-3 6-6 6-10a6 6 0 0 0-12 0c0 4 5 7 6 10z"/><circle cx="12" cy="12" r="2"/><path d="M7 8.5A5 5 0 0 1 12 6m5 2.5A5 5 0 0 0 12 6"/></svg>
+        </div>
+        <div class="product-name display-font">Feed</div>
+        <div class="product-tag-line">
+          <span class="en-text">Give It, Don't Throw It</span>
+          <span class="ar-text">فيد واستفيد</span>
+        </div>
+      </div>
+      <div class="product-body">
+        <p>
+          <span class="en-text">A Saudi community app where people give away or sell things they no longer need to people nearby. Every listing is ranked by distance, charities have verified accounts, and addresses stay private until the owner chooses a receiver.</span>
+          <span class="ar-text">تطبيق سعودي يتيح للناس التبرع بأشيائهم أو بيعها لمن حولهم. كل إعلان مرتب حسب المسافة، والجمعيات الخيرية لها حسابات موثقة، والعنوان يبقى خاصاً حتى يختار صاحب الإعلان المستلم.</span>
+        </p>
+        <ul class="feature-list" role="list">
+          <li role="listitem"><span class="en-text">Location-based listings: give, sell, or pay what you want</span><span class="ar-text">إعلانات حسب الموقع: تبرع أو بيع أو ادفع ما تشاء</span></li>
+          <li role="listitem"><span class="en-text">Privacy-first: blurred location until owner accepts</span><span class="ar-text">خصوصية أولاً: موقع مموّه حتى موافقة المالك</span></li>
+          <li role="listitem"><span class="en-text">Verified charity accounts with direct donations</span><span class="ar-text">حسابات جمعيات خيرية موثقة مع تبرعات مباشرة</span></li>
+          <li role="listitem"><span class="en-text">In-app chat with per-listing request system</span><span class="ar-text">محادثة داخلية مع نظام طلبات لكل إعلان</span></li>
+        </ul>
+        <a href="https://feed.sa" class="btn-product" target="_blank" rel="noopener">
+          <span class="en-text">Visit Feed</span><span class="ar-text">زُر فيد</span>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
       </div>
@@ -1180,6 +1222,7 @@ html[dir="rtl"] .service-card h3{font-family:var(--ff-ar);}
               <option value="matjrai">MatjrAI</option>
               <option value="diriyah">Diriyah Live</option>
               <option value="sense">Sense</option>
+              <option value="feed">Feed</option>
               <option value="custom" data-en="Custom Development" data-ar="تطوير مخصص">Custom Development</option>
               <option value="other" data-en="Other / General Inquiry" data-ar="استفسار عام">Other / General Inquiry</option>
             </select>
@@ -1272,6 +1315,7 @@ html[dir="rtl"] .service-card h3{font-family:var(--ff-ar);}
         <li><a href="#products">MatjrAI</a></li>
         <li><a href="#products">Diriyah Live</a></li>
         <li><a href="#products">Sense</a></li>
+        <li><a href="#products">Feed</a></li>
       </ul>
     </div>
     <div class="footer-col">
