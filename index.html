@@ -384,16 +384,16 @@ html[dir="rtl"] .product-name{font-family:var(--ff-ar);}
 .diriyah .btn-product:hover{background:var(--gold);color:var(--ink);}
 .sense .btn-product{border-color:var(--purple);color:var(--purple);}
 .sense .btn-product:hover{background:var(--purple);color:var(--ink);}
-.product-card.feed .product-header{background:linear-gradient(135deg,#001a0a 0%,#002e1a 50%,#001a10 100%);}
+.product-card.feed .product-header{background:linear-gradient(135deg,#1a0a1e 0%,#2e1a32 50%,#1a0a1e 100%);}
 .product-card.feed .product-header::before{
   content:'';position:absolute;top:-40px;right:-40px;
   width:200px;height:200px;border-radius:50%;
-  background:radial-gradient(circle,rgba(74,222,128,.3),transparent 70%);
+  background:radial-gradient(circle,rgba(199,54,111,.3),transparent 70%);
 }
-.feed .product-tag-line{color:var(--green);}
-.feed .feature-list li::before{background:rgba(74,222,128,.15);color:var(--green);}
-.feed .btn-product{border-color:var(--green);color:var(--green);}
-.feed .btn-product:hover{background:var(--green);color:var(--ink);}
+.feed .product-tag-line{color:#e8739e;}
+.feed .feature-list li::before{background:rgba(199,54,111,.15);color:#e8739e;}
+.feed .btn-product{border-color:#e8739e;color:#e8739e;}
+.feed .btn-product:hover{background:#e8739e;color:var(--ink);}
 
 /* ─────────────────────────────────────────
    REVIEWS / TESTIMONIALS
@@ -565,7 +565,7 @@ html[dir="rtl"] .crm-dash-title{font-family:var(--ff-ar);}
 .crm-sub-product.matjrai{background:rgba(88,197,199,.12);color:var(--cyan);}
 .crm-sub-product.diriyah{background:rgba(254,190,16,.12);color:var(--gold);}
 .crm-sub-product.sense{background:rgba(167,139,250,.12);color:var(--purple);}
-.crm-sub-product.feed{background:rgba(74,222,128,.12);color:var(--green);}
+.crm-sub-product.feed{background:rgba(199,54,111,.12);color:#e8739e;}
 .crm-sub-product.custom,.crm-sub-product.other{background:rgba(255,255,255,.06);color:var(--muted);}
 .crm-sub-time{font-size:.75rem;color:var(--muted);}
 .crm-clear-btn{
@@ -1022,7 +1022,7 @@ html[dir="rtl"] .service-card h3{font-family:var(--ff-ar);}
     <!-- Sense -->
     <article class="product-card sense fade-up" aria-label="Sense Product">
       <div class="product-header">
-        <div class="product-emoji" aria-hidden="true">♿</div>
+        <img src="sense-logo.png" alt="Sense Logo" class="product-logo-img" style="width:80px;height:80px;border-radius:16px;margin-bottom:16px;object-fit:cover;position:relative;z-index:1;">
         <div class="product-name display-font">Sense</div>
         <div class="product-tag-line">
           <span class="en-text">AI Navigation for Visual Impairment</span>
@@ -1050,9 +1050,7 @@ html[dir="rtl"] .service-card h3{font-family:var(--ff-ar);}
     <!-- Feed -->
     <article class="product-card feed fade-up" aria-label="Feed Product">
       <div class="product-header">
-        <div class="product-logo-icon" style="width:80px;height:80px;border-radius:20px;background:linear-gradient(135deg,#166534,#22c55e);display:flex;align-items:center;justify-content:center;margin-bottom:16px;position:relative;z-index:1;">
-          <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c1-3 6-6 6-10a6 6 0 0 0-12 0c0 4 5 7 6 10z"/><circle cx="12" cy="12" r="2"/><path d="M7 8.5A5 5 0 0 1 12 6m5 2.5A5 5 0 0 0 12 6"/></svg>
-        </div>
+        <img src="feed-logo.png" alt="Feed Logo" class="product-logo-img" style="width:80px;height:80px;border-radius:16px;margin-bottom:16px;object-fit:cover;position:relative;z-index:1;">
         <div class="product-name display-font">Feed</div>
         <div class="product-tag-line">
           <span class="en-text">Give It, Don't Throw It</span>
