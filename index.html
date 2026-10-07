@@ -1604,16 +1604,19 @@ form.addEventListener('submit', async e => {
   submitBtn.classList.add('loading');
 
   try {
-    // Simulate API delay (replace with real endpoint)
-    await new Promise(r => setTimeout(r, 1200));
+    const res = await fetch('https://formspree.io/f/xoejjwdo', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(data),
+    });
+
+    if (!res.ok) throw new Error('Form submission failed');
 
     lastSubmit = Date.now();
     submitCount++;
 
-    // Regenerate CSRF token
     document.getElementById('csrfToken').value = generateCSRF();
 
-    // Show success
     form.style.display = 'none';
     successDiv.style.display = 'flex';
     showToast(isAR() ? 'تم إرسال رسالتك بنجاح ✓' : 'Message delivered successfully ✓');
